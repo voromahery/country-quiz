@@ -28304,41 +28304,59 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 // fetch 1 which is match the requirement
 // fetch 3 other which are different
 function App() {
+  // Create all necessaries variable
   const [dataCountry, setDataCountry] = (0, _react.useState)([]);
   const [randomName, setRandomName] = (0, _react.useState)([]);
-  const [question, setQuestion] = (0, _react.useState)([{
+  const question = [{
     text: "is the capital of ?"
   }, {
     text: "Which country does this flag belong to?"
-  }]);
+  }];
   const [randomQuestion, setRandomQuestion] = (0, _react.useState)([]);
+  let askCapital = `${randomName.capital} ${randomQuestion.text}`;
+  const [targetValue, setTargetValue] = (0, _react.useState)(false);
 
   async function fetchData() {
     const response = await fetch("https://restcountries.eu/rest/v2/all");
     const data = await response.json();
     setDataCountry(data);
+    const randomIndex = Math.floor(Math.random() * data.length);
+    setRandomName(data[randomIndex]);
+    const randomQuestionIndex = Math.floor(Math.random() * question.length);
+    setRandomQuestion(question[randomQuestionIndex]);
   }
 
   function handleClick() {
-    const randomIndex = Math.floor(Math.random() * dataCountry.length);
-    setRandomName(dataCountry[randomIndex]);
-    const randomQuestionIndex = Math.floor(Math.random() * question.length);
-    setRandomQuestion(question[randomQuestionIndex]);
-    console.log(randomQuestion, "Question");
+    fetchData();
   }
 
   (0, _react.useEffect)(() => {
-    fetchData();
+    fetchData(dataCountry); // handleClick(randomName);
   }, []);
-  console.log(dataCountry.name);
+
+  function handleClickAnswer(e) {
+    if (e.target.value === randomName.name) {
+      console.log(true);
+    }
+  }
+
+  console.log(randomName);
+  console.log(dataCountry);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", null, "Country quiz")), randomQuestion.text === "is the capital of ?" ? /*#__PURE__*/_react.default.createElement("article", null, /*#__PURE__*/_react.default.createElement("h3", {
     className: "question"
-  }, randomName.capital, " is the capital of ?"), /*#__PURE__*/_react.default.createElement("button", null, randomName.name || dataCountry.name)) : /*#__PURE__*/_react.default.createElement("article", null, /*#__PURE__*/_react.default.createElement("h3", {
-    className: "question"
-  }, /*#__PURE__*/_react.default.createElement("img", {
+  }, askCapital), /*#__PURE__*/_react.default.createElement("button", {
+    value: randomName.name,
+    onClick: handleClickAnswer
+  }, randomName.name)) : /*#__PURE__*/_react.default.createElement("article", null, /*#__PURE__*/_react.default.createElement("img", {
     src: randomName.flag,
     alt: "flag"
-  }), " Which country does this flag belong to?"), /*#__PURE__*/_react.default.createElement("button", null, randomName.name || dataCountry.name)), /*#__PURE__*/_react.default.createElement("button", {
+  }), /*#__PURE__*/_react.default.createElement("h3", {
+    className: "question"
+  }, " ", randomQuestion.text), /*#__PURE__*/_react.default.createElement("button", {
+    value: randomName.name,
+    onClick: handleClickAnswer
+  }, " ", randomName.name)), /*#__PURE__*/_react.default.createElement("button", {
+    className: "next",
     onClick: handleClick
   }, "Next"));
 }
@@ -28385,7 +28403,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51615" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57791" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
