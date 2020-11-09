@@ -28311,6 +28311,18 @@ function App() {
   const [randomQuestion, setRandomQuestion] = (0, _react.useState)([]);
   const [randomNumber, setRandomNumber] = (0, _react.useState)();
   const [targetValue, setTargetValue] = (0, _react.useState)(false);
+  const [answer2, setAnswer2] = (0, _react.useState)([]);
+  const [answer3, setAnswer3] = (0, _react.useState)([]);
+  const [answer4, setAnswer4] = (0, _react.useState)([]);
+  const [testAnswer, setTestAnswer] = (0, _react.useState)([{
+    answer: answer2
+  }, {
+    answer: answer3
+  }, {
+    answer: answer4
+  }, {
+    answer: randomName
+  }]);
 
   async function fetchData() {
     // Fetch the whole country
@@ -28319,10 +28331,24 @@ function App() {
     setDataCountry(data); // Get random country by index
 
     const randomIndex = Math.floor(Math.random() * data.length);
-    setRandomName(data[randomIndex]); // Get random question by index
+    setRandomName(data[randomIndex]);
+    const randomIndex2 = Math.floor(Math.random() * data.length);
+    setAnswer2(data[randomIndex2]);
+    const randomIndex3 = Math.floor(Math.random() * data.length);
+    setAnswer3(data[randomIndex3]);
+    const randomIndex4 = Math.floor(Math.random() * data.length);
+    setAnswer4(data[randomIndex4]);
+    console.log(randomIndex, randomIndex2, randomIndex3, randomIndex4); // Get random question by index
 
     const randomQuestionIndex = Math.floor(Math.random() * question.length);
     setRandomQuestion(question[randomQuestionIndex]);
+    setTestAnswer({
+      answer2,
+      answer3,
+      answer4,
+      randomName
+    });
+    console.log(answer4);
   }
 
   function handleClick() {
@@ -28332,15 +28358,16 @@ function App() {
   (0, _react.useEffect)(() => {
     fetchData(dataCountry); // handleClick(randomName);
   }, []);
+  console.log(testAnswer);
 
   function handleClickAnswer(e) {
     if (e.target.value === randomName.name) {
       console.log(true);
     }
-  }
+  } // console.log(randomName);
+  // console.log(dataCountry);
 
-  console.log(randomName);
-  console.log(dataCountry);
+
   let questionChoice = "";
 
   if (randomQuestion.text === "is the capital of ?") {

@@ -8,6 +8,17 @@ function App() {
     const [randomQuestion, setRandomQuestion] = useState([]);
     const [randomNumber, setRandomNumber] = useState();
     const [targetValue, setTargetValue] = useState(false);
+    const [answer2, setAnswer2] = useState([]);
+    const [answer3, setAnswer3] = useState([]);
+    const [answer4, setAnswer4] = useState([]);
+    const [testAnswer, setTestAnswer] = useState([
+        {answer: answer2},
+        {answer: answer3},
+        {answer: answer4},
+        {answer: randomName}
+    ]);
+
+
 
     async function fetchData() {
         // Fetch the whole country
@@ -19,9 +30,21 @@ function App() {
         const randomIndex = Math.floor(Math.random() * data.length);
         setRandomName(data[randomIndex]);
 
+        const randomIndex2= Math.floor(Math.random() * data.length);
+        setAnswer2(data[randomIndex2]);
+
+        const randomIndex3 = Math.floor(Math.random() * data.length);
+        setAnswer3(data[randomIndex3]);
+
+        const randomIndex4 = Math.floor(Math.random() * data.length);
+        setAnswer4(data[randomIndex4]);
+
+        console.log(randomIndex, randomIndex2, randomIndex3, randomIndex4);
         // Get random question by index
         const randomQuestionIndex = Math.floor(Math.random() * question.length);
         setRandomQuestion(question[randomQuestionIndex]);
+        setTestAnswer({answer2, answer3, answer4, randomName});
+        console.log(answer4);
     }
 
     function handleClick() {
@@ -32,6 +55,8 @@ function App() {
         fetchData(dataCountry);
         // handleClick(randomName);
     }, [])
+    console.log(testAnswer);
+
 
     function handleClickAnswer(e) {
         if (e.target.value === randomName.name) {
@@ -39,8 +64,8 @@ function App() {
         }
     }
 
-    console.log(randomName);
-    console.log(dataCountry);
+    // console.log(randomName);
+    // console.log(dataCountry);
 
     let questionChoice = "";
 
@@ -51,6 +76,7 @@ function App() {
     if (randomQuestion.text === "Which country does this flag belong to?") {
         questionChoice = "Which country does this flag belong to?";
     }
+
     return (
         <div>
             <header>
