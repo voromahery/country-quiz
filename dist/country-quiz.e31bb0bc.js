@@ -28299,10 +28299,6 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-// Generate 2 question/random
-// 1 good 3 bad
-// fetch 1 which is match the requirement
-// fetch 3 other which are different
 function App() {
   // Create all necessaries variable
   const [dataCountry, setDataCountry] = (0, _react.useState)([]);
@@ -28313,15 +28309,18 @@ function App() {
     text: "Which country does this flag belong to?"
   }];
   const [randomQuestion, setRandomQuestion] = (0, _react.useState)([]);
-  let askCapital = `${randomName.capital} ${randomQuestion.text}`;
+  const [randomNumber, setRandomNumber] = (0, _react.useState)();
   const [targetValue, setTargetValue] = (0, _react.useState)(false);
 
   async function fetchData() {
+    // Fetch the whole country
     const response = await fetch("https://restcountries.eu/rest/v2/all");
     const data = await response.json();
-    setDataCountry(data);
+    setDataCountry(data); // Get random country by index
+
     const randomIndex = Math.floor(Math.random() * data.length);
-    setRandomName(data[randomIndex]);
+    setRandomName(data[randomIndex]); // Get random question by index
+
     const randomQuestionIndex = Math.floor(Math.random() * question.length);
     setRandomQuestion(question[randomQuestionIndex]);
   }
@@ -28342,20 +28341,25 @@ function App() {
 
   console.log(randomName);
   console.log(dataCountry);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", null, "Country quiz")), randomQuestion.text === "is the capital of ?" ? /*#__PURE__*/_react.default.createElement("article", null, /*#__PURE__*/_react.default.createElement("h3", {
-    className: "question"
-  }, askCapital), /*#__PURE__*/_react.default.createElement("button", {
-    value: randomName.name,
-    onClick: handleClickAnswer
-  }, randomName.name)) : /*#__PURE__*/_react.default.createElement("article", null, /*#__PURE__*/_react.default.createElement("img", {
+  let questionChoice = "";
+
+  if (randomQuestion.text === "is the capital of ?") {
+    questionChoice = `${randomName.capital} ${randomQuestion.text}`;
+  }
+
+  if (randomQuestion.text === "Which country does this flag belong to?") {
+    questionChoice = "Which country does this flag belong to?";
+  }
+
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", null, "Country quiz")), /*#__PURE__*/_react.default.createElement("article", null, questionChoice === "Which country does this flag belong to?" ? /*#__PURE__*/_react.default.createElement("img", {
     src: randomName.flag,
     alt: "flag"
-  }), /*#__PURE__*/_react.default.createElement("h3", {
+  }) : "", /*#__PURE__*/_react.default.createElement("h3", {
     className: "question"
-  }, " ", randomQuestion.text), /*#__PURE__*/_react.default.createElement("button", {
+  }, questionChoice), /*#__PURE__*/_react.default.createElement("button", {
     value: randomName.name,
     onClick: handleClickAnswer
-  }, " ", randomName.name)), /*#__PURE__*/_react.default.createElement("button", {
+  }, randomName.name)), /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: handleClick
   }, "Next"));
