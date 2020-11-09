@@ -28303,13 +28303,15 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 // 1 good 3 bad
 // fetch 1 which is match the requirement
 // fetch 3 other which are different
-//All: https://restcountries.eu/rest/v2/all
-//Name: https://restcountries.eu/rest/v2/name/{name}
-//Capital:https://restcountries.eu/rest/v2/capital/{capital}
 function App() {
   const [dataCountry, setDataCountry] = (0, _react.useState)([]);
   const [randomName, setRandomName] = (0, _react.useState)([]);
-  const [randomData, setRandomData] = (0, _react.useState)([]);
+  const [question, setQuestion] = (0, _react.useState)([{
+    text: "is the capital of ?"
+  }, {
+    text: "Which country does this flag belong to?"
+  }]);
+  const [randomQuestion, setRandomQuestion] = (0, _react.useState)([]);
 
   async function fetchData() {
     const response = await fetch("https://restcountries.eu/rest/v2/all");
@@ -28320,17 +28322,25 @@ function App() {
   function handleClick() {
     const randomIndex = Math.floor(Math.random() * dataCountry.length);
     setRandomName(dataCountry[randomIndex]);
-    console.log(randomName, "NNN");
+    const randomQuestionIndex = Math.floor(Math.random() * question.length);
+    setRandomQuestion(question[randomQuestionIndex]);
+    console.log(randomQuestion, "Question");
   }
 
   (0, _react.useEffect)(() => {
     fetchData();
   }, []);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", null, "Country quiz")), /*#__PURE__*/_react.default.createElement("article", null, /*#__PURE__*/_react.default.createElement("h3", {
+  console.log(dataCountry.name);
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", null, "Country quiz")), randomQuestion.text === "is the capital of ?" ? /*#__PURE__*/_react.default.createElement("article", null, /*#__PURE__*/_react.default.createElement("h3", {
     className: "question"
-  }, "is the capital of"), /*#__PURE__*/_react.default.createElement("button", {
+  }, randomName.capital, " is the capital of ?"), /*#__PURE__*/_react.default.createElement("button", null, randomName.name || dataCountry.name)) : /*#__PURE__*/_react.default.createElement("article", null, /*#__PURE__*/_react.default.createElement("h3", {
+    className: "question"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: randomName.flag,
+    alt: "flag"
+  }), " Which country does this flag belong to?"), /*#__PURE__*/_react.default.createElement("button", null, randomName.name || dataCountry.name)), /*#__PURE__*/_react.default.createElement("button", {
     onClick: handleClick
-  }, "Generate")));
+  }, "Next"));
 }
 
 var _default = App;
