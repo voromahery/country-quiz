@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Question from './Question';
 import ScoreModal from './ScoreModal';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     const letter = ["A", "B", "C", "D"];
     const [lose, setLose] = useState(false);
     const [counter, setCounter] = useState(0);
+    const [showModal, setShowModal] = useState(false);
 
     async function fetchData() {
         // Fetch the whole country
@@ -22,15 +24,11 @@ function App() {
         // Get random country by index
         const randomIndex = Math.floor(Math.random() * data.length);
         setRandomName(data[randomIndex]);
-
         const randomIndex2 = Math.floor(Math.random() * data.length);
-
         const randomIndex3 = Math.floor(Math.random() * data.length);
-
         const randomIndex4 = Math.floor(Math.random() * data.length);
-
-        // console.log(data[randomIndex], (data[randomIndex2]), (data[randomIndex3]), (data[randomIndex4]));
-        // Get random question by index
+        
+        // Stored everything in an array
         const randomQuestionIndex = Math.floor(Math.random() * question.length);
         setRandomQuestion(question[randomQuestionIndex]);
         setTestAnswer([
@@ -79,6 +77,9 @@ function App() {
         }
     }
 
+    function show() {
+        setShowModal(true);
+    }
 
     let questionChoice = "";
 
@@ -92,32 +93,17 @@ function App() {
 
     return (
         <div>
-            {lose ? <ScoreModal counter={counter}/>:
-            <>
-            <header>
-                <h1>Country quiz</h1>
-            </header>
-            <article>
-                {questionChoice === "Which country does this flag belong to?" ? <img src={randomName.flag} alt="flag" /> : ""}
-                <h3 className="question">{questionChoice}</h3>
-                <ul>
-                    {testAnswer.sort((a, b) => a.answer.length - b.answer.length).map(test =>
-                        <li className="list-item" key={test.id}>
-                            <button
-                                name="button"
-                                value={test.answer}
-                                id={test.answer}
-                                onClick={handleClickAnswer}
-                            >
-                                {`${letter} ${test.answer}`}
-                            </button>
-                        </li>
-                    )}
-                </ul>
-            </article>
-            <button className="next" onClick={handleClick}>Next</button>
-            </>
-                    }
+            {showModal ? <ScoreModal counter={counter}/>:
+                    <Question
+                        questionChoice={questionChoice}
+                        randomName={randomName}
+                        testAnswer={testAnswer}
+                        handleClickAnswer={handleClickAnswer}
+                        handleClick={handleClick}
+                        lose={lose}
+                        show={show}
+                    />
+}
         </div>
     )
 }

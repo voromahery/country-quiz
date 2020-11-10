@@ -28285,7 +28285,41 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"ScoreModal.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"Question.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Question;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Question(props) {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", null, "Country quiz")), /*#__PURE__*/_react.default.createElement("article", null, props.questionChoice === "Which country does this flag belong to?" ? /*#__PURE__*/_react.default.createElement("img", {
+    src: props.randomName.flag,
+    alt: "flag"
+  }) : "", /*#__PURE__*/_react.default.createElement("h3", {
+    className: "question"
+  }, props.questionChoice), /*#__PURE__*/_react.default.createElement("ul", null, props.testAnswer.sort((a, b) => a.answer.length - b.answer.length).map(test => /*#__PURE__*/_react.default.createElement("li", {
+    className: "list-item",
+    key: test.id
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    name: "button",
+    value: test.answer,
+    id: test.answer,
+    onClick: props.handleClickAnswer
+  }, `${test.answer}`))), props.lose ? /*#__PURE__*/_react.default.createElement("button", {
+    className: "next",
+    onClick: props.show
+  }, "Next") : /*#__PURE__*/_react.default.createElement("button", {
+    className: "next",
+    onClick: props.handleClick
+  }, "Next"))));
+}
+},{"react":"node_modules/react/index.js"}],"ScoreModal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28298,7 +28332,10 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function ScoreModal(props) {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", props.counter, " corect answer"));
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", props.counter, " correct answer"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "next",
+    onClick: props.fetchData
+  }, "Retry"));
 }
 },{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
 "use strict";
@@ -28309,6 +28346,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _Question = _interopRequireDefault(require("./Question"));
 
 var _ScoreModal = _interopRequireDefault(require("./ScoreModal"));
 
@@ -28333,6 +28372,7 @@ function App() {
   const letter = ["A", "B", "C", "D"];
   const [lose, setLose] = (0, _react.useState)(false);
   const [counter, setCounter] = (0, _react.useState)(0);
+  const [showModal, setShowModal] = (0, _react.useState)(false);
 
   async function fetchData() {
     // Fetch the whole country
@@ -28344,8 +28384,7 @@ function App() {
     setRandomName(data[randomIndex]);
     const randomIndex2 = Math.floor(Math.random() * data.length);
     const randomIndex3 = Math.floor(Math.random() * data.length);
-    const randomIndex4 = Math.floor(Math.random() * data.length); // console.log(data[randomIndex], (data[randomIndex2]), (data[randomIndex3]), (data[randomIndex4]));
-    // Get random question by index
+    const randomIndex4 = Math.floor(Math.random() * data.length); // Stored everything in an array
 
     const randomQuestionIndex = Math.floor(Math.random() * question.length);
     setRandomQuestion(question[randomQuestionIndex]);
@@ -28391,6 +28430,10 @@ function App() {
     }
   }
 
+  function show() {
+    setShowModal(true);
+  }
+
   let questionChoice = "";
 
   if (randomQuestion.text === "is the capital of ?") {
@@ -28401,30 +28444,22 @@ function App() {
     questionChoice = "Which country does this flag belong to?";
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", null, lose ? /*#__PURE__*/_react.default.createElement(_ScoreModal.default, {
+  return /*#__PURE__*/_react.default.createElement("div", null, showModal ? /*#__PURE__*/_react.default.createElement(_ScoreModal.default, {
     counter: counter
-  }) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", null, "Country quiz")), /*#__PURE__*/_react.default.createElement("article", null, questionChoice === "Which country does this flag belong to?" ? /*#__PURE__*/_react.default.createElement("img", {
-    src: randomName.flag,
-    alt: "flag"
-  }) : "", /*#__PURE__*/_react.default.createElement("h3", {
-    className: "question"
-  }, questionChoice), /*#__PURE__*/_react.default.createElement("ul", null, testAnswer.sort((a, b) => a.answer.length - b.answer.length).map(test => /*#__PURE__*/_react.default.createElement("li", {
-    className: "list-item",
-    key: test.id
-  }, /*#__PURE__*/_react.default.createElement("button", {
-    name: "button",
-    value: test.answer,
-    id: test.answer,
-    onClick: handleClickAnswer
-  }, `${letter} ${test.answer}`))))), /*#__PURE__*/_react.default.createElement("button", {
-    className: "next",
-    onClick: handleClick
-  }, "Next")));
+  }) : /*#__PURE__*/_react.default.createElement(_Question.default, {
+    questionChoice: questionChoice,
+    randomName: randomName,
+    testAnswer: testAnswer,
+    handleClickAnswer: handleClickAnswer,
+    handleClick: handleClick,
+    lose: lose,
+    show: show
+  }));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./ScoreModal":"ScoreModal.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Question":"Question.js","./ScoreModal":"ScoreModal.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
