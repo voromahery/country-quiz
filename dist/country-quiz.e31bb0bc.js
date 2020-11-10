@@ -28303,7 +28303,9 @@ function Question(props) {
     className: "container"
   }, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", {
     className: "heading"
-  }, "Country quiz")), /*#__PURE__*/_react.default.createElement("article", null, props.questionChoice === "Which country does this flag belong to?" ? /*#__PURE__*/_react.default.createElement("img", {
+  }, "Country quiz")), /*#__PURE__*/_react.default.createElement("article", {
+    className: "card"
+  }, props.questionChoice === "Which country does this flag belong to?" ? /*#__PURE__*/_react.default.createElement("img", {
     src: props.randomName.flag,
     alt: "flag"
   }) : "", /*#__PURE__*/_react.default.createElement("h3", {
@@ -28316,13 +28318,13 @@ function Question(props) {
     value: test.answer,
     id: test.answer,
     onClick: props.handleClickAnswer
-  }, /*#__PURE__*/_react.default.createElement("span", null, props.letter[index]), " ", test.answer, /*#__PURE__*/_react.default.createElement("span", null, icon)))), props.lose ? /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("span", null, props.letter[index]), " ", test.answer, /*#__PURE__*/_react.default.createElement("span", null, icon)))), props.lose === true ? /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: props.show
-  }, "Next") : /*#__PURE__*/_react.default.createElement("button", {
+  }, "Next") : "", props.showButton === true && props.lose === false ? /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: props.handleClick
-  }, "Next"))));
+  }, "Next") : "")));
 }
 },{"react":"node_modules/react/index.js"}],"ScoreModal.js":[function(require,module,exports) {
 "use strict";
@@ -28337,7 +28339,9 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function ScoreModal(props) {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", props.counter, " correct answer"), /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "card"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", props.counter, " correct answer"), /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: props.handleClick
   }, "Retry"));
@@ -28378,7 +28382,7 @@ function App() {
   const [lose, setLose] = (0, _react.useState)(false);
   const [counter, setCounter] = (0, _react.useState)(0);
   const [showModal, setShowModal] = (0, _react.useState)(false);
-  const [retryGame, setRetryGame] = (0, _react.useState)(false);
+  const [showButton, setShowButton] = (0, _react.useState)(false); // const [retryGame, setRetryGame] = useState(false);
 
   async function fetchData() {
     // Fetch the whole country
@@ -28423,13 +28427,17 @@ function App() {
 
     if (trueAnswer) {
       setTargetValue(true);
-      e.target.style.backgroundColor = "green";
+      e.target.style.backgroundColor = "#60BF88";
+      e.target.style.color = "#FFFFFF";
       setLose(false);
+      setShowButton(true);
       setCounter(prevState => prevState + 1);
     } else {
       setTargetValue(false);
-      e.target.style.backgroundColor = "red";
+      e.target.style.backgroundColor = "#EA8282";
+      e.target.style.color = "#FFFFFF";
       setLose(true);
+      setShowButton(true);
       console.log(counter);
     }
   } // Show the modal if the user is lost
@@ -28454,7 +28462,9 @@ function App() {
     questionChoice = "Which country does this flag belong to?";
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", null, showModal ? /*#__PURE__*/_react.default.createElement(_ScoreModal.default, {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
+  }, showModal ? /*#__PURE__*/_react.default.createElement(_ScoreModal.default, {
     counter: counter,
     randomName: randomName,
     dataCountry: dataCountry
@@ -28467,7 +28477,8 @@ function App() {
     lose: lose,
     show: show,
     letter: letter,
-    targetValue: targetValue
+    targetValue: targetValue,
+    showButton: showButton
   }));
 }
 

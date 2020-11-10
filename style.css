@@ -4,7 +4,7 @@ body {
     background-color: rgba(96, 102, 208, 0.7);
 }
 
-article {
+.card {
     background-color: #FFFFFF;
     border-radius: 12px;
     padding-left: 32px;
@@ -14,7 +14,7 @@ article {
 }
 
 .container,
-article {
+.card {
     max-width: 464px;
     margin: auto;
 }
@@ -57,18 +57,29 @@ button {
     background-color: rgb(226, 88, 88);
 }
 
+.next,
+.button-answer {
+    width: 100%;
+    height: 56px;
+    border-radius: 12px;
+}
+
+.next {
+    color: #FFFFFF;
+    text-align: center;
+    max-width: 116px;
+}
+
 .button-answer {
     background-color: #FFFFFF;
     text-align: start;
-    width: 100%;
-    height: 56px;
     max-width: 400px;
-    border-radius: 12px;
     color: rgba(96, 102, 208, 0.8);
     border: 2px solid rgba(96, 102, 208, 0.7);
 }
 
-.button-answer:hover {
+.button-answer:hover,
+.next {
     background-color: #F9A826;
     border: solid 2px #F9A826;
     color: #FFFFFF;

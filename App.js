@@ -14,7 +14,8 @@ function App() {
     const [lose, setLose] = useState(false);
     const [counter, setCounter] = useState(0);
     const [showModal, setShowModal] = useState(false);
-    const [retryGame, setRetryGame] = useState(false);
+    const [showButton, setShowButton] = useState(false)
+    // const [retryGame, setRetryGame] = useState(false);
 
     async function fetchData() {
         // Fetch the whole country
@@ -67,13 +68,17 @@ function App() {
 
         if (trueAnswer) {
             setTargetValue(true);
-            e.target.style.backgroundColor = "green";
+            e.target.style.backgroundColor = "#60BF88"; 
+            e.target.style.color="#FFFFFF";
             setLose(false);
+            setShowButton(true)
             setCounter(prevState => prevState + 1);
         } else {
             setTargetValue(false);
-            e.target.style.backgroundColor = "red";
+            e.target.style.backgroundColor = "#EA8282";
+            e.target.style.color="#FFFFFF";
             setLose(true);
+            setShowButton(true);
             console.log(counter);
         }
     }
@@ -101,7 +106,7 @@ function App() {
     }
 
     return (
-        <div>
+        <div className="container">
             {showModal ? <ScoreModal counter={counter} randomName={randomName} dataCountry={dataCountry}/> :
                 <Question
                     questionChoice={questionChoice}
@@ -113,6 +118,7 @@ function App() {
                     show={show}
                     letter={letter}
                     targetValue={targetValue}
+                    showButton={showButton}
                 />
             }
         </div>
