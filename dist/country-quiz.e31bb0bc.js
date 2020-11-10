@@ -28456,10 +28456,12 @@ function App() {
 
   function show() {
     setShowModal(true);
-  }
+  } // For retry button, everything will be reseted.
+
 
   function retryAgain() {
     fetchData();
+    setCounter(0);
     setRetryGame(false);
     setShowModal(false);
     setDisable(false);
@@ -28479,8 +28481,6 @@ function App() {
     className: "container"
   }, showModal ? /*#__PURE__*/_react.default.createElement(_ScoreModal.default, {
     counter: counter,
-    randomName: randomName,
-    dataCountry: dataCountry,
     retryAgain: retryAgain,
     dataCountry: dataCountry,
     randomName: randomName

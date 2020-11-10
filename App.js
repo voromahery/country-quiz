@@ -94,9 +94,10 @@ function App() {
         setShowModal(true);
     }
 
-
+// For retry button, everything will be reseted.
     function retryAgain() {
          fetchData();
+         setCounter(0);
          setRetryGame(false);
          setShowModal(false);
          setDisable(false);
@@ -116,8 +117,6 @@ function App() {
         <div className="container">
             {showModal ? <ScoreModal
             counter={counter}
-            randomName={randomName}
-            dataCountry={dataCountry}
             retryAgain={retryAgain}
             dataCountry={dataCountry}
             randomName={randomName}
