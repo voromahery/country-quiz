@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ScoreModal from './ScoreModal';
 
 function App() {
     // Create all necessaries variable
@@ -8,7 +9,9 @@ function App() {
     const [randomQuestion, setRandomQuestion] = useState([]);
     const [targetValue, setTargetValue] = useState(false);
     const [testAnswer, setTestAnswer] = useState([]);
-    const list = [{ letter: "A" }, { letter: "B" }, { letter: "C" }, { letter: "D" }];
+    const letter = ["A", "B", "C", "D"];
+    const [lose, setLose] = useState(false);
+    const [counter, setCounter] = useState(0);
 
     async function fetchData() {
         // Fetch the whole country
@@ -64,11 +67,16 @@ function App() {
         if (trueAnswer) {
             setTargetValue(true);
             e.target.style.backgroundColor = "green";
+            setLose(false);
+            console.log(lose, "LOST");
+            setCounter(prevState => prevState + 1);
         } else {
             setTargetValue(false);
             e.target.style.backgroundColor = "red";
+            setLose(true);
+            console.log(lose, "LOST");
+            console.log(counter);
         }
-        console.log(targetValue);
     }
 
 
@@ -84,6 +92,8 @@ function App() {
 
     return (
         <div>
+            {lose ? <ScoreModal counter={counter}/>:
+            <>
             <header>
                 <h1>Country quiz</h1>
             </header>
@@ -99,13 +109,15 @@ function App() {
                                 id={test.answer}
                                 onClick={handleClickAnswer}
                             >
-                                {test.answer}
+                                {`${letter} ${test.answer}`}
                             </button>
                         </li>
                     )}
                 </ul>
             </article>
             <button className="next" onClick={handleClick}>Next</button>
+            </>
+                    }
         </div>
     )
 }
