@@ -28348,7 +28348,7 @@ function ScoreModal(props) {
     className: "score"
   }, props.counter), " correct answer"), /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
-    onClick: props.handleClick
+    onClick: props.retryAgain
   }, "Retry"));
 }
 },{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
@@ -28418,11 +28418,12 @@ function App() {
       answer: data[randomIndex4].name,
       id: 4
     }]);
-  }
+  } // Next button
+
 
   function handleClick() {
     fetchData();
-    setTargetValue(!targetValue);
+    setTargetValue(false);
     setDisable(false);
   }
 
@@ -28458,10 +28459,10 @@ function App() {
   }
 
   function retryAgain() {
-    setRetryGame(true);
     fetchData();
-    console.log("retryGame", retryGame);
     setRetryGame(false);
+    setShowModal(false);
+    setDisable(false);
   }
 
   let questionChoice = "";

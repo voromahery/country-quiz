@@ -54,10 +54,12 @@ function App() {
         ]);
     }
 
+    // Next button
     function handleClick() {
         fetchData();
-        setTargetValue(!targetValue);
+        setTargetValue(false);
         setDisable(false);
+
     }
 
     useEffect(() => {
@@ -94,10 +96,10 @@ function App() {
 
 
     function retryAgain() {
-         setRetryGame(true);
          fetchData();
-         console.log("retryGame", retryGame);
          setRetryGame(false);
+         setShowModal(false);
+         setDisable(false);
      }
 
     let questionChoice = "";
