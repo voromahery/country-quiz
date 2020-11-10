@@ -28309,20 +28309,17 @@ function App() {
     text: "Which country does this flag belong to?"
   }];
   const [randomQuestion, setRandomQuestion] = (0, _react.useState)([]);
-  const [randomNumber, setRandomNumber] = (0, _react.useState)();
   const [targetValue, setTargetValue] = (0, _react.useState)(false);
-  const [answer2, setAnswer2] = (0, _react.useState)([]);
-  const [answer3, setAnswer3] = (0, _react.useState)([]);
-  const [answer4, setAnswer4] = (0, _react.useState)([]);
-  const [testAnswer, setTestAnswer] = (0, _react.useState)([{
-    answer: answer2
+  const [testAnswer, setTestAnswer] = (0, _react.useState)([]);
+  const list = [{
+    letter: "A"
   }, {
-    answer: answer3
+    letter: "B"
   }, {
-    answer: answer4
+    letter: "C"
   }, {
-    answer: randomName
-  }]);
+    letter: "D"
+  }];
 
   async function fetchData() {
     // Fetch the whole country
@@ -28333,22 +28330,25 @@ function App() {
     const randomIndex = Math.floor(Math.random() * data.length);
     setRandomName(data[randomIndex]);
     const randomIndex2 = Math.floor(Math.random() * data.length);
-    setAnswer2(data[randomIndex2]);
     const randomIndex3 = Math.floor(Math.random() * data.length);
-    setAnswer3(data[randomIndex3]);
-    const randomIndex4 = Math.floor(Math.random() * data.length);
-    setAnswer4(data[randomIndex4]);
-    console.log(randomIndex, randomIndex2, randomIndex3, randomIndex4); // Get random question by index
+    const randomIndex4 = Math.floor(Math.random() * data.length); // console.log(data[randomIndex], (data[randomIndex2]), (data[randomIndex3]), (data[randomIndex4]));
+    // Get random question by index
 
     const randomQuestionIndex = Math.floor(Math.random() * question.length);
     setRandomQuestion(question[randomQuestionIndex]);
-    setTestAnswer({
-      answer2,
-      answer3,
-      answer4,
-      randomName
-    });
-    console.log(answer4);
+    setTestAnswer([{
+      answer: data[randomIndex].name,
+      id: 1
+    }, {
+      answer: data[randomIndex2].name,
+      id: 2
+    }, {
+      answer: data[randomIndex3].name,
+      id: 3
+    }, {
+      answer: data[randomIndex4].name,
+      id: 4
+    }]);
   }
 
   function handleClick() {
@@ -28361,12 +28361,20 @@ function App() {
   console.log(testAnswer);
 
   function handleClickAnswer(e) {
-    if (e.target.value === randomName.name) {
-      console.log(true);
-    }
-  } // console.log(randomName);
-  // console.log(dataCountry);
+    const id = e.target.id;
+    console.log(id, "id");
+    const dataFind = testAnswer.find(item => item.id === randomName.name);
+    console.log(dataFind, "find", randomName.name);
 
+    if (e.target.id === randomName.name) {
+      setTargetValue(true);
+      e.target.style.backgroundColor = "green";
+      !e.target.disabled;
+    } else {
+      setTargetValue(false);
+      e.target.style.backgroundColor = "red";
+    }
+  }
 
   let questionChoice = "";
 
@@ -28383,10 +28391,14 @@ function App() {
     alt: "flag"
   }) : "", /*#__PURE__*/_react.default.createElement("h3", {
     className: "question"
-  }, questionChoice), /*#__PURE__*/_react.default.createElement("button", {
-    value: randomName.name,
+  }, questionChoice), /*#__PURE__*/_react.default.createElement("ul", null, testAnswer.map(test => /*#__PURE__*/_react.default.createElement("li", {
+    className: "list-item",
+    key: test.id
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    value: test.answer,
+    id: test.answer,
     onClick: handleClickAnswer
-  }, randomName.name)), /*#__PURE__*/_react.default.createElement("button", {
+  }, test.answer))))), /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: handleClick
   }, "Next"));
@@ -28434,7 +28446,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57791" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63076" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

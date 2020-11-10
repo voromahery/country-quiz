@@ -6,19 +6,9 @@ function App() {
     const [randomName, setRandomName] = useState([]);
     const question = [{ text: "is the capital of ?" }, { text: "Which country does this flag belong to?" }];
     const [randomQuestion, setRandomQuestion] = useState([]);
-    const [randomNumber, setRandomNumber] = useState();
     const [targetValue, setTargetValue] = useState(false);
-    const [answer2, setAnswer2] = useState([]);
-    const [answer3, setAnswer3] = useState([]);
-    const [answer4, setAnswer4] = useState([]);
-    const [testAnswer, setTestAnswer] = useState([
-        {answer: answer2},
-        {answer: answer3},
-        {answer: answer4},
-        {answer: randomName}
-    ]);
-
-
+    const [testAnswer, setTestAnswer] = useState([]);
+    const list = [{ letter: "A" }, { letter: "B" }, { letter: "C" }, { letter: "D" }];
 
     async function fetchData() {
         // Fetch the whole country
@@ -30,21 +20,34 @@ function App() {
         const randomIndex = Math.floor(Math.random() * data.length);
         setRandomName(data[randomIndex]);
 
-        const randomIndex2= Math.floor(Math.random() * data.length);
-        setAnswer2(data[randomIndex2]);
+        const randomIndex2 = Math.floor(Math.random() * data.length);
 
         const randomIndex3 = Math.floor(Math.random() * data.length);
-        setAnswer3(data[randomIndex3]);
 
         const randomIndex4 = Math.floor(Math.random() * data.length);
-        setAnswer4(data[randomIndex4]);
 
-        console.log(randomIndex, randomIndex2, randomIndex3, randomIndex4);
+        // console.log(data[randomIndex], (data[randomIndex2]), (data[randomIndex3]), (data[randomIndex4]));
         // Get random question by index
         const randomQuestionIndex = Math.floor(Math.random() * question.length);
         setRandomQuestion(question[randomQuestionIndex]);
-        setTestAnswer({answer2, answer3, answer4, randomName});
-        console.log(answer4);
+        setTestAnswer([
+            {
+                answer: data[randomIndex].name,
+                id: 1
+            },
+            {
+                answer: data[randomIndex2].name,
+                id: 2
+            },
+            {
+                answer: data[randomIndex3].name,
+                id: 3
+            },
+            {
+                answer: data[randomIndex4].name,
+                id: 4
+            },
+        ]);
     }
 
     function handleClick() {
@@ -59,13 +62,21 @@ function App() {
 
 
     function handleClickAnswer(e) {
-        if (e.target.value === randomName.name) {
-            console.log(true);
+        const id = e.target.id;
+        console.log(id,"id");
+        const dataFind = testAnswer.find(item => item.id === randomName.name);
+        console.log(dataFind,"find", randomName.name);
+        if (e.target.id === randomName.name) {
+            setTargetValue(true);
+             e.target.style.backgroundColor="green";
+             !e.target.disabled;
+        } else {
+            setTargetValue(false);
+            e.target.style.backgroundColor="red";
+
         }
     }
 
-    // console.log(randomName);
-    // console.log(dataCountry);
 
     let questionChoice = "";
 
@@ -82,11 +93,23 @@ function App() {
             <header>
                 <h1>Country quiz</h1>
             </header>
-                <article>
-                    {questionChoice === "Which country does this flag belong to?"?<img src={randomName.flag} alt="flag" />:""}
-                    <h3 className="question">{questionChoice}</h3>
-                    <button value={randomName.name} onClick={handleClickAnswer}>{randomName.name}</button>
-                </article>
+            <article>
+                {questionChoice === "Which country does this flag belong to?" ? <img src={randomName.flag} alt="flag" /> : ""}
+                <h3 className="question">{questionChoice}</h3>
+                <ul>
+                    {testAnswer.map(test =>
+                        <li className="list-item" key={test.id}>
+                            <button
+                                value={test.answer}
+                                id={test.answer}
+                                onClick={handleClickAnswer}
+                            >
+                                {test.answer}
+                            </button>
+                        </li>
+                    )}
+                </ul>
+            </article>
             <button className="next" onClick={handleClick}>Next</button>
         </div>
     )
