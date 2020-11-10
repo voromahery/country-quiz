@@ -28353,27 +28353,25 @@ function App() {
 
   function handleClick() {
     fetchData();
+    setTargetValue();
   }
 
   (0, _react.useEffect)(() => {
-    fetchData(dataCountry); // handleClick(randomName);
+    fetchData(dataCountry);
   }, []);
-  console.log(testAnswer);
 
   function handleClickAnswer(e) {
-    const id = e.target.id;
-    console.log(id, "id");
-    const dataFind = testAnswer.find(item => item.id === randomName.name);
-    console.log(dataFind, "find", randomName.name);
+    const trueAnswer = e.target.value === randomName.name;
 
-    if (e.target.id === randomName.name) {
+    if (trueAnswer) {
       setTargetValue(true);
       e.target.style.backgroundColor = "green";
-      !e.target.disabled;
     } else {
       setTargetValue(false);
       e.target.style.backgroundColor = "red";
     }
+
+    console.log(targetValue);
   }
 
   let questionChoice = "";
@@ -28391,10 +28389,11 @@ function App() {
     alt: "flag"
   }) : "", /*#__PURE__*/_react.default.createElement("h3", {
     className: "question"
-  }, questionChoice), /*#__PURE__*/_react.default.createElement("ul", null, testAnswer.map(test => /*#__PURE__*/_react.default.createElement("li", {
+  }, questionChoice), /*#__PURE__*/_react.default.createElement("ul", null, testAnswer.sort((a, b) => a.answer.length - b.answer.length).map(test => /*#__PURE__*/_react.default.createElement("li", {
     className: "list-item",
     key: test.id
   }, /*#__PURE__*/_react.default.createElement("button", {
+    name: "button",
     value: test.answer,
     id: test.answer,
     onClick: handleClickAnswer

@@ -52,29 +52,23 @@ function App() {
 
     function handleClick() {
         fetchData();
+        setTargetValue();
     }
 
     useEffect(() => {
         fetchData(dataCountry);
-        // handleClick(randomName);
     }, [])
-    console.log(testAnswer);
-
 
     function handleClickAnswer(e) {
-        const id = e.target.id;
-        console.log(id,"id");
-        const dataFind = testAnswer.find(item => item.id === randomName.name);
-        console.log(dataFind,"find", randomName.name);
-        if (e.target.id === randomName.name) {
+        const trueAnswer = e.target.value === randomName.name;
+        if (trueAnswer) {
             setTargetValue(true);
-             e.target.style.backgroundColor="green";
-             !e.target.disabled;
+            e.target.style.backgroundColor = "green";
         } else {
             setTargetValue(false);
-            e.target.style.backgroundColor="red";
-
+            e.target.style.backgroundColor = "red";
         }
+        console.log(targetValue);
     }
 
 
@@ -97,9 +91,10 @@ function App() {
                 {questionChoice === "Which country does this flag belong to?" ? <img src={randomName.flag} alt="flag" /> : ""}
                 <h3 className="question">{questionChoice}</h3>
                 <ul>
-                    {testAnswer.map(test =>
+                    {testAnswer.sort((a, b) => a.answer.length - b.answer.length).map(test =>
                         <li className="list-item" key={test.id}>
                             <button
+                                name="button"
                                 value={test.answer}
                                 id={test.answer}
                                 onClick={handleClickAnswer}
