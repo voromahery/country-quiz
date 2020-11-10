@@ -20,7 +20,8 @@ body {
 }
 
 img {
-    max-width: 62px;
+    max-width: 84px;
+    filter: drop-shadow(0px 4px 24px rgba(0, 0, 0, 0.1));
 }
 
 .next {
@@ -92,6 +93,21 @@ button {
 .heading {
     color: #F2F2F2;
     text-transform: uppercase;
+}
+
+.heading-result,
+.score {
+    font-weight: 700;
+}
+
+.heading-result {
+    font-size: 48px;
+    color: #1D355D;
+}
+
+.score {
+    font-size: 46px;
+    color: #60BF88;
 }
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

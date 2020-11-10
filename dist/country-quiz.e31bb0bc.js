@@ -28314,6 +28314,7 @@ function Question(props) {
     className: "list-item",
     key: test.id
   }, /*#__PURE__*/_react.default.createElement("button", {
+    disabled: props.disable ? "disabled" : "",
     className: "button-answer",
     value: test.answer,
     id: test.answer,
@@ -28341,7 +28342,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function ScoreModal(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "card"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", props.counter, " correct answer"), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("h1", {
+    className: "heading-result"
+  }, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", /*#__PURE__*/_react.default.createElement("span", {
+    className: "score"
+  }, props.counter), " correct answer"), /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: props.handleClick
   }, "Retry"));
@@ -28382,7 +28387,9 @@ function App() {
   const [lose, setLose] = (0, _react.useState)(false);
   const [counter, setCounter] = (0, _react.useState)(0);
   const [showModal, setShowModal] = (0, _react.useState)(false);
-  const [showButton, setShowButton] = (0, _react.useState)(false); // const [retryGame, setRetryGame] = useState(false);
+  const [showButton, setShowButton] = (0, _react.useState)(false);
+  const [retryGame, setRetryGame] = (0, _react.useState)(false);
+  const [disable, setDisable] = (0, _react.useState)(false);
 
   async function fetchData() {
     // Fetch the whole country
@@ -28416,6 +28423,7 @@ function App() {
   function handleClick() {
     fetchData();
     setTargetValue(!targetValue);
+    setDisable(false);
   }
 
   (0, _react.useEffect)(() => {
@@ -28427,8 +28435,9 @@ function App() {
 
     if (trueAnswer) {
       setTargetValue(true);
-      e.target.style.backgroundColor = "#60BF88";
-      e.target.style.color = "#FFFFFF";
+      e.currentTarget.style.backgroundColor = "#60BF88";
+      e.currentTarget.style.color = "#FFFFFF";
+      setDisable(true);
       setLose(false);
       setShowButton(true);
       setCounter(prevState => prevState + 1);
@@ -28436,21 +28445,24 @@ function App() {
       setTargetValue(false);
       e.target.style.backgroundColor = "#EA8282";
       e.target.style.color = "#FFFFFF";
+      setDisable(true);
       setLose(true);
       setShowButton(true);
-      console.log(counter);
+      console.log(trueAnswer);
     }
   } // Show the modal if the user is lost
 
 
   function show() {
     setShowModal(true);
-  } // function retryAgain() {
-  //     setRetryGame(true);
-  //     fetchData();
-  //     console.log("retryGame", retryGame);
-  // }
+  }
 
+  function retryAgain() {
+    setRetryGame(true);
+    fetchData();
+    console.log("retryGame", retryGame);
+    setRetryGame(false);
+  }
 
   let questionChoice = "";
 
@@ -28467,11 +28479,15 @@ function App() {
   }, showModal ? /*#__PURE__*/_react.default.createElement(_ScoreModal.default, {
     counter: counter,
     randomName: randomName,
-    dataCountry: dataCountry
+    dataCountry: dataCountry,
+    retryAgain: retryAgain,
+    dataCountry: dataCountry,
+    randomName: randomName
   }) : /*#__PURE__*/_react.default.createElement(_Question.default, {
     questionChoice: questionChoice,
     randomName: randomName,
     testAnswer: testAnswer,
+    disable: disable,
     handleClickAnswer: handleClickAnswer,
     handleClick: handleClick,
     lose: lose,
@@ -28524,7 +28540,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52432" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55929" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

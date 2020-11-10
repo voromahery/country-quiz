@@ -3,8 +3,8 @@ import React from 'react';
 export default function ScoreModal(props) {
     return (
         <div className="card">
-            <h1>Results</h1>
-            <p>You got {props.counter} correct answer</p>
+            <h1 className="heading-result">Results</h1>
+            <p>You got <span className="score">{props.counter}</span> correct answer</p>
             <button className="next" onClick={props.handleClick}>Retry</button>
         </div>
     )

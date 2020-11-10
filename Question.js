@@ -15,6 +15,7 @@ let icon = "";
                     {props.testAnswer.sort((a, b) => a.answer.length - b.answer.length).map((test, index) => 
                         <li className="list-item" key={test.id}>
                             <button
+                                disabled={props.disable?"disabled":""}
                                 className="button-answer"
                                 value={test.answer}
                                 id={test.answer}
@@ -25,7 +26,7 @@ let icon = "";
                             </button>
                         </li>
                     )}
-                    {props.lose === true?<button className="next" onClick={props.show}>Next</button>: ""}
+                    {props.lose === true ?<button className="next" onClick={props.show}>Next</button>: ""}
                     {props.showButton===true && props.lose===false ?<button className="next" onClick={props.handleClick}>Next</button>:""}
                 </ul>
             </article>
