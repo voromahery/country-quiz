@@ -28298,20 +28298,25 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Question(props) {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", null, "Country quiz")), /*#__PURE__*/_react.default.createElement("article", null, props.questionChoice === "Which country does this flag belong to?" ? /*#__PURE__*/_react.default.createElement("img", {
+  let icon = "";
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", {
+    className: "heading"
+  }, "Country quiz")), /*#__PURE__*/_react.default.createElement("article", null, props.questionChoice === "Which country does this flag belong to?" ? /*#__PURE__*/_react.default.createElement("img", {
     src: props.randomName.flag,
     alt: "flag"
   }) : "", /*#__PURE__*/_react.default.createElement("h3", {
     className: "question"
-  }, props.questionChoice), /*#__PURE__*/_react.default.createElement("ul", null, props.testAnswer.sort((a, b) => a.answer.length - b.answer.length).map(test => /*#__PURE__*/_react.default.createElement("li", {
+  }, props.questionChoice), /*#__PURE__*/_react.default.createElement("ul", null, props.testAnswer.sort((a, b) => a.answer.length - b.answer.length).map((test, index) => /*#__PURE__*/_react.default.createElement("li", {
     className: "list-item",
     key: test.id
   }, /*#__PURE__*/_react.default.createElement("button", {
-    name: "button",
+    className: "button-answer",
     value: test.answer,
     id: test.answer,
     onClick: props.handleClickAnswer
-  }, `${test.answer}`))), props.lose ? /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("span", null, props.letter[index]), " ", test.answer, /*#__PURE__*/_react.default.createElement("span", null, icon)))), props.lose ? /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: props.show
   }, "Next") : /*#__PURE__*/_react.default.createElement("button", {
@@ -28334,7 +28339,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function ScoreModal(props) {
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", props.counter, " correct answer"), /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
-    onClick: props.fetchData
+    onClick: props.handleClick
   }, "Retry"));
 }
 },{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
@@ -28373,6 +28378,7 @@ function App() {
   const [lose, setLose] = (0, _react.useState)(false);
   const [counter, setCounter] = (0, _react.useState)(0);
   const [showModal, setShowModal] = (0, _react.useState)(false);
+  const [retryGame, setRetryGame] = (0, _react.useState)(false);
 
   async function fetchData() {
     // Fetch the whole country
@@ -28405,12 +28411,12 @@ function App() {
 
   function handleClick() {
     fetchData();
-    setTargetValue();
+    setTargetValue(!targetValue);
   }
 
   (0, _react.useEffect)(() => {
     fetchData(dataCountry);
-  }, []);
+  }, []); // Answer button
 
   function handleClickAnswer(e) {
     const trueAnswer = e.target.value === randomName.name;
@@ -28419,20 +28425,24 @@ function App() {
       setTargetValue(true);
       e.target.style.backgroundColor = "green";
       setLose(false);
-      console.log(lose, "LOST");
       setCounter(prevState => prevState + 1);
     } else {
       setTargetValue(false);
       e.target.style.backgroundColor = "red";
       setLose(true);
-      console.log(lose, "LOST");
       console.log(counter);
     }
-  }
+  } // Show the modal if the user is lost
+
 
   function show() {
     setShowModal(true);
-  }
+  } // function retryAgain() {
+  //     setRetryGame(true);
+  //     fetchData();
+  //     console.log("retryGame", retryGame);
+  // }
+
 
   let questionChoice = "";
 
@@ -28445,7 +28455,9 @@ function App() {
   }
 
   return /*#__PURE__*/_react.default.createElement("div", null, showModal ? /*#__PURE__*/_react.default.createElement(_ScoreModal.default, {
-    counter: counter
+    counter: counter,
+    randomName: randomName,
+    dataCountry: dataCountry
   }) : /*#__PURE__*/_react.default.createElement(_Question.default, {
     questionChoice: questionChoice,
     randomName: randomName,
@@ -28453,7 +28465,9 @@ function App() {
     handleClickAnswer: handleClickAnswer,
     handleClick: handleClick,
     lose: lose,
-    show: show
+    show: show,
+    letter: letter,
+    targetValue: targetValue
   }));
 }
 
@@ -28499,7 +28513,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50097" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52432" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

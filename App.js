@@ -14,6 +14,7 @@ function App() {
     const [lose, setLose] = useState(false);
     const [counter, setCounter] = useState(0);
     const [showModal, setShowModal] = useState(false);
+    const [retryGame, setRetryGame] = useState(false);
 
     async function fetchData() {
         // Fetch the whole country
@@ -27,7 +28,7 @@ function App() {
         const randomIndex2 = Math.floor(Math.random() * data.length);
         const randomIndex3 = Math.floor(Math.random() * data.length);
         const randomIndex4 = Math.floor(Math.random() * data.length);
-        
+
         // Stored everything in an array
         const randomQuestionIndex = Math.floor(Math.random() * question.length);
         setRandomQuestion(question[randomQuestionIndex]);
@@ -53,33 +54,41 @@ function App() {
 
     function handleClick() {
         fetchData();
-        setTargetValue();
+        setTargetValue(!targetValue);
     }
 
     useEffect(() => {
         fetchData(dataCountry);
     }, [])
-
+  
+    // Answer button
     function handleClickAnswer(e) {
         const trueAnswer = e.target.value === randomName.name;
+
         if (trueAnswer) {
             setTargetValue(true);
             e.target.style.backgroundColor = "green";
             setLose(false);
-            console.log(lose, "LOST");
             setCounter(prevState => prevState + 1);
         } else {
             setTargetValue(false);
             e.target.style.backgroundColor = "red";
             setLose(true);
-            console.log(lose, "LOST");
             console.log(counter);
         }
     }
 
+    // Show the modal if the user is lost
     function show() {
         setShowModal(true);
     }
+
+
+    // function retryAgain() {
+    //     setRetryGame(true);
+    //     fetchData();
+    //     console.log("retryGame", retryGame);
+    // }
 
     let questionChoice = "";
 
@@ -93,17 +102,19 @@ function App() {
 
     return (
         <div>
-            {showModal ? <ScoreModal counter={counter}/>:
-                    <Question
-                        questionChoice={questionChoice}
-                        randomName={randomName}
-                        testAnswer={testAnswer}
-                        handleClickAnswer={handleClickAnswer}
-                        handleClick={handleClick}
-                        lose={lose}
-                        show={show}
-                    />
-}
+            {showModal ? <ScoreModal counter={counter} randomName={randomName} dataCountry={dataCountry}/> :
+                <Question
+                    questionChoice={questionChoice}
+                    randomName={randomName}
+                    testAnswer={testAnswer}
+                    handleClickAnswer={handleClickAnswer}
+                    handleClick={handleClick}
+                    lose={lose}
+                    show={show}
+                    letter={letter}
+                    targetValue={targetValue}
+                />
+            }
         </div>
     )
 }
