@@ -57,7 +57,7 @@ function App() {
     // Next button
     function handleClick() {
         fetchData();
-        setTargetValue(false);
+        // setTargetValue(false);
         setDisable(false);
 
     }
@@ -71,7 +71,7 @@ function App() {
         const trueAnswer = e.target.value === randomName.name;
 
         if (trueAnswer) {
-            setTargetValue(true);
+            // setTargetValue(true);
             e.currentTarget.style.backgroundColor = "#60BF88"; 
             e.currentTarget.style.color="#FFFFFF";
             setDisable(true);
@@ -79,7 +79,7 @@ function App() {
             setShowButton(true)
             setCounter(prevState => prevState + 1);
         } else {
-            setTargetValue(false);
+            // setTargetValue(false);
             e.target.style.backgroundColor = "#EA8282";
             e.target.style.color="#FFFFFF";
             setDisable(true);

@@ -28422,8 +28422,8 @@ function App() {
 
 
   function handleClick() {
-    fetchData();
-    setTargetValue(false);
+    fetchData(); // setTargetValue(false);
+
     setDisable(false);
   }
 
@@ -28435,7 +28435,7 @@ function App() {
     const trueAnswer = e.target.value === randomName.name;
 
     if (trueAnswer) {
-      setTargetValue(true);
+      // setTargetValue(true);
       e.currentTarget.style.backgroundColor = "#60BF88";
       e.currentTarget.style.color = "#FFFFFF";
       setDisable(true);
@@ -28443,7 +28443,7 @@ function App() {
       setShowButton(true);
       setCounter(prevState => prevState + 1);
     } else {
-      setTargetValue(false);
+      // setTargetValue(false);
       e.target.style.backgroundColor = "#EA8282";
       e.target.style.color = "#FFFFFF";
       setDisable(true);
@@ -28541,7 +28541,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55929" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51325" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
