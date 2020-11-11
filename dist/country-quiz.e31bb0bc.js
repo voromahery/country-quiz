@@ -28428,8 +28428,7 @@ function App() {
 
   (0, _react.useEffect)(() => {
     fetchData();
-  }, []);
-  console.log(correct); // Answer button
+  }, []); // Answer button
 
   function handleClickAnswer(e) {
     const container = document.querySelector(".container");
@@ -28437,7 +28436,7 @@ function App() {
     const trueAnswer = e.target.value === correct;
 
     if (trueAnswer) {
-      // e.target.classList.add("true");
+      e.target.classList.add("true");
       setDisable(true);
       setLose(false);
       setShowButton(true);
@@ -28447,11 +28446,11 @@ function App() {
       setDisable(true);
       setLose(true);
       setShowButton(true);
-      console.log(trueAnswer); // If the wrong is clicked, the correct will appear.
-
-      const correctButton = buttons.find(button => button.value === correct);
-      correctButton.classList.add("true");
+      console.log(trueAnswer);
     }
+
+    const correctButton = buttons.find(button => button.value === correct);
+    correctButton.classList.add("true");
   } // Show the modal if the user is lost
 
 
@@ -28543,7 +28542,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63436" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49524" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

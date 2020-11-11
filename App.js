@@ -54,7 +54,7 @@ function App() {
         ]);
         setCorrect(data[randomIndex].name);
     }
-
+    
     // Next button
     function handleClick() {
         fetchData();
@@ -64,16 +64,14 @@ function App() {
     useEffect(() => {
         fetchData();
     }, [])
-
-    console.log(correct);
-
+  
     // Answer button
     function handleClickAnswer(e) {
         const container = document.querySelector(".container");
         const buttons = Array.from(container.querySelectorAll(".button-answer"));
         const trueAnswer = e.target.value === correct;
         if (trueAnswer) {
-            // e.target.classList.add("true");
+            e.target.classList.add("true");
             setDisable(true);
             setLose(false);
             setShowButton(true)
@@ -84,11 +82,9 @@ function App() {
             setLose(true);
             setShowButton(true);
             console.log(trueAnswer);
-
-            // If the wrong is clicked, the correct will appear.
-            const correctButton = buttons.find(button => button.value === correct)
-            correctButton.classList.add("true")
         }
+        const correctButton = buttons.find(button => button.value === correct)
+        correctButton.classList.add("true")
     }
 
     // Show the modal if the user is lost
@@ -96,14 +92,14 @@ function App() {
         setShowModal(true);
     }
 
-    // For retry button, everything will be reseted.
+// For retry button, everything will be reseted.
     function retryAgain() {
-        fetchData();
-        setCounter(0);
-        setRetryGame(false);
-        setShowModal(false);
-        setDisable(false);
-    }
+         fetchData();
+         setCounter(0);
+         setRetryGame(false);
+         setShowModal(false);
+         setDisable(false);
+     }
 
     let questionChoice = "";
 
@@ -121,9 +117,9 @@ function App() {
                 <h1 className="heading">Country quiz</h1>
             </header>
             {showModal ? <ScoreModal
-                counter={counter}
-                retryAgain={retryAgain}
-                dataCountry={dataCountry}
+            counter={counter}
+            retryAgain={retryAgain}
+            dataCountry={dataCountry}
             /> :
                 <Question
                     questionChoice={questionChoice}
