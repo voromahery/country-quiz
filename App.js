@@ -8,7 +8,6 @@ function App() {
     const [randomName, setRandomName] = useState([]);
     const question = [{ text: "is the capital of ?" }, { text: "Which country does this flag belong to?" }];
     const [randomQuestion, setRandomQuestion] = useState([]);
-    const [targetValue, setTargetValue] = useState(false);
     const [testAnswer, setTestAnswer] = useState([]);
     const letter = ["A", "B", "C", "D"];
     const [lose, setLose] = useState(false);
@@ -57,9 +56,7 @@ function App() {
     // Next button
     function handleClick() {
         fetchData();
-        // setTargetValue(false);
         setDisable(false);
-
     }
 
     useEffect(() => {
@@ -69,23 +66,24 @@ function App() {
     // Answer button
     function handleClickAnswer(e) {
         const trueAnswer = e.target.value === randomName.name;
-
         if (trueAnswer) {
-            // setTargetValue(true);
-            e.currentTarget.style.backgroundColor = "#60BF88"; 
-            e.currentTarget.style.color="#FFFFFF";
+            e.target.style.backgroundColor = "#60BF88"; 
+            e.target.style.color="#FFFFFF";
             setDisable(true);
             setLose(false);
             setShowButton(true)
             setCounter(prevState => prevState + 1);
-        } else {
-            // setTargetValue(false);
+        } 
+        if (!trueAnswer) {
             e.target.style.backgroundColor = "#EA8282";
             e.target.style.color="#FFFFFF";
             setDisable(true);
             setLose(true);
             setShowButton(true);
             console.log(trueAnswer);
+        } else {
+            // e.target.style.backgroundColor = "#FFFFFF";
+            // e.target.style.color="rgba(96, 102, 208, 0.8)";
         }
     }
 
@@ -115,11 +113,13 @@ function App() {
 
     return (
         <div className="container">
+            <header>
+                <h1 className="heading">Country quiz</h1>
+            </header>
             {showModal ? <ScoreModal
             counter={counter}
             retryAgain={retryAgain}
             dataCountry={dataCountry}
-            randomName={randomName}
             /> :
                 <Question
                     questionChoice={questionChoice}
@@ -131,7 +131,6 @@ function App() {
                     lose={lose}
                     show={show}
                     letter={letter}
-                    targetValue={targetValue}
                     showButton={showButton}
                 />
             }

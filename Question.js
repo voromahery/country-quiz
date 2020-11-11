@@ -1,13 +1,9 @@
 import React from 'react';
 
 export default function Question(props) {
-let icon = "";
 
     return (
         <div className="container">
-            <header>
-                <h1 className="heading">Country quiz</h1>
-            </header>
             <article className="card">
                 {props.questionChoice === "Which country does this flag belong to?" ? <img src={props.randomName.flag} alt="flag" /> : ""}
                 <h3 className="question">{props.questionChoice}</h3>
@@ -22,7 +18,6 @@ let icon = "";
                                 onClick={props.handleClickAnswer}
                             >
                                 <span>{props.letter[index]}</span> {test.answer}
-                    <span>{icon}</span>
                             </button>
                         </li>
                     )}

@@ -28298,12 +28298,9 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Question(props) {
-  let icon = "";
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", {
-    className: "heading"
-  }, "Country quiz")), /*#__PURE__*/_react.default.createElement("article", {
+  }, /*#__PURE__*/_react.default.createElement("article", {
     className: "card"
   }, props.questionChoice === "Which country does this flag belong to?" ? /*#__PURE__*/_react.default.createElement("img", {
     src: props.randomName.flag,
@@ -28319,7 +28316,7 @@ function Question(props) {
     value: test.answer,
     id: test.answer,
     onClick: props.handleClickAnswer
-  }, /*#__PURE__*/_react.default.createElement("span", null, props.letter[index]), " ", test.answer, /*#__PURE__*/_react.default.createElement("span", null, icon)))), props.lose === true ? /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("span", null, props.letter[index]), " ", test.answer))), props.lose === true ? /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: props.show
   }, "Next") : "", props.showButton === true && props.lose === false ? /*#__PURE__*/_react.default.createElement("button", {
@@ -28381,7 +28378,6 @@ function App() {
     text: "Which country does this flag belong to?"
   }];
   const [randomQuestion, setRandomQuestion] = (0, _react.useState)([]);
-  const [targetValue, setTargetValue] = (0, _react.useState)(false);
   const [testAnswer, setTestAnswer] = (0, _react.useState)([]);
   const letter = ["A", "B", "C", "D"];
   const [lose, setLose] = (0, _react.useState)(false);
@@ -28422,8 +28418,7 @@ function App() {
 
 
   function handleClick() {
-    fetchData(); // setTargetValue(false);
-
+    fetchData();
     setDisable(false);
   }
 
@@ -28435,21 +28430,23 @@ function App() {
     const trueAnswer = e.target.value === randomName.name;
 
     if (trueAnswer) {
-      // setTargetValue(true);
-      e.currentTarget.style.backgroundColor = "#60BF88";
-      e.currentTarget.style.color = "#FFFFFF";
+      e.target.style.backgroundColor = "#60BF88";
+      e.target.style.color = "#FFFFFF";
       setDisable(true);
       setLose(false);
       setShowButton(true);
       setCounter(prevState => prevState + 1);
-    } else {
-      // setTargetValue(false);
+    }
+
+    if (!trueAnswer) {
       e.target.style.backgroundColor = "#EA8282";
       e.target.style.color = "#FFFFFF";
       setDisable(true);
       setLose(true);
       setShowButton(true);
       console.log(trueAnswer);
+    } else {// e.target.style.backgroundColor = "#FFFFFF";
+      // e.target.style.color="rgba(96, 102, 208, 0.8)";
     }
   } // Show the modal if the user is lost
 
@@ -28479,11 +28476,12 @@ function App() {
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, showModal ? /*#__PURE__*/_react.default.createElement(_ScoreModal.default, {
+  }, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", {
+    className: "heading"
+  }, "Country quiz")), showModal ? /*#__PURE__*/_react.default.createElement(_ScoreModal.default, {
     counter: counter,
     retryAgain: retryAgain,
-    dataCountry: dataCountry,
-    randomName: randomName
+    dataCountry: dataCountry
   }) : /*#__PURE__*/_react.default.createElement(_Question.default, {
     questionChoice: questionChoice,
     randomName: randomName,
@@ -28494,7 +28492,6 @@ function App() {
     lose: lose,
     show: show,
     letter: letter,
-    targetValue: targetValue,
     showButton: showButton
   }));
 }
@@ -28541,7 +28538,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51325" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60665" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
