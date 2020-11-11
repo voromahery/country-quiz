@@ -28386,6 +28386,7 @@ function App() {
   const [showButton, setShowButton] = (0, _react.useState)(false);
   const [retryGame, setRetryGame] = (0, _react.useState)(false);
   const [disable, setDisable] = (0, _react.useState)(false);
+  const [correct, setCorrect] = (0, _react.useState)();
 
   async function fetchData() {
     // Fetch the whole country
@@ -28414,6 +28415,7 @@ function App() {
       answer: data[randomIndex4].name,
       id: 4
     }]);
+    setCorrect(data[randomIndex].name);
   } // Next button
 
 
@@ -28424,30 +28426,34 @@ function App() {
 
   (0, _react.useEffect)(() => {
     fetchData(dataCountry);
-  }, []); // Answer button
+  }, []);
+  console.log(correct); // Answer button
 
   function handleClickAnswer(e) {
-    const trueAnswer = e.target.value === randomName.name;
+    const container = document.querySelector(".container");
+    const buttons = Array.from(container.querySelectorAll(".button-answer"));
+    const trueAnswer = e.target.value === correct;
 
     if (trueAnswer) {
-      e.target.style.backgroundColor = "#60BF88";
-      e.target.style.color = "#FFFFFF";
+      // e.target.style.backgroundColor = "#60BF88"; 
+      // e.target.style.color="#FFFFFF";
+      e.target.classList.add("true");
       setDisable(true);
       setLose(false);
       setShowButton(true);
       setCounter(prevState => prevState + 1);
-    }
-
-    if (!trueAnswer) {
+      return e.target.classList.remove("true");
+    } else {
       e.target.style.backgroundColor = "#EA8282";
       e.target.style.color = "#FFFFFF";
       setDisable(true);
       setLose(true);
       setShowButton(true);
       console.log(trueAnswer);
-    } else {// e.target.style.backgroundColor = "#FFFFFF";
-      // e.target.style.color="rgba(96, 102, 208, 0.8)";
     }
+
+    const buttonwithTheCorrectAnswer = buttons.find(button => button.value === correct);
+    buttonwithTheCorrectAnswer.classList.add("true");
   } // Show the modal if the user is lost
 
 
@@ -28538,7 +28544,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60665" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58863" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

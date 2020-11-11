@@ -50,13 +50,10 @@ button {
 }
 
 
-/* .true {
-    background-color: rgb(47, 221, 47);
-} 
 
-.false {
+/* .false {
     background-color: rgb(226, 88, 88);
-} */
+} */ 
 
 .next,
 .button-answer {
@@ -109,5 +106,10 @@ button {
     font-size: 46px;
     color: #60BF88;
 }
+
+.true {
+    background-color: #60BF88;
+    color: #FFFFFF;
+} 
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

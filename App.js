@@ -16,6 +16,7 @@ function App() {
     const [showButton, setShowButton] = useState(false)
     const [retryGame, setRetryGame] = useState(false);
     const [disable, setDisable] = useState(false);
+    const [correct, setCorrect] = useState()
 
     async function fetchData() {
         // Fetch the whole country
@@ -51,8 +52,10 @@ function App() {
                 id: 4
             },
         ]);
+        setCorrect(data[randomIndex].name);
     }
 
+    
     // Next button
     function handleClick() {
         fetchData();
@@ -63,28 +66,32 @@ function App() {
         fetchData(dataCountry);
     }, [])
   
+ console.log(correct);
+
     // Answer button
     function handleClickAnswer(e) {
-        const trueAnswer = e.target.value === randomName.name;
+        const container = document.querySelector(".container");
+        const buttons = Array.from(container.querySelectorAll(".button-answer"))
+        const trueAnswer = e.target.value === correct;
         if (trueAnswer) {
-            e.target.style.backgroundColor = "#60BF88"; 
-            e.target.style.color="#FFFFFF";
+            // e.target.style.backgroundColor = "#60BF88"; 
+            // e.target.style.color="#FFFFFF";
+            e.target.classList.add("true")
             setDisable(true);
             setLose(false);
             setShowButton(true)
             setCounter(prevState => prevState + 1);
-        } 
-        if (!trueAnswer) {
+            return e.target.classList.remove("true")
+        } else {
             e.target.style.backgroundColor = "#EA8282";
             e.target.style.color="#FFFFFF";
             setDisable(true);
             setLose(true);
             setShowButton(true);
             console.log(trueAnswer);
-        } else {
-            // e.target.style.backgroundColor = "#FFFFFF";
-            // e.target.style.color="rgba(96, 102, 208, 0.8)";
         }
+        const buttonwithTheCorrectAnswer = buttons.find(button => button.value === correct)
+        buttonwithTheCorrectAnswer.classList.add("true")
     }
 
     // Show the modal if the user is lost
