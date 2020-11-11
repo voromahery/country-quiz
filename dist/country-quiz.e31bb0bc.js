@@ -28307,7 +28307,9 @@ function Question(props) {
     alt: "flag"
   }) : "", /*#__PURE__*/_react.default.createElement("h3", {
     className: "question"
-  }, props.questionChoice), /*#__PURE__*/_react.default.createElement("ul", null, props.testAnswer.sort((a, b) => a.answer.length - b.answer.length).map((test, index) => /*#__PURE__*/_react.default.createElement("li", {
+  }, props.questionChoice), /*#__PURE__*/_react.default.createElement("ul", {
+    className: "list"
+  }, props.testAnswer.sort((a, b) => a.answer.length - b.answer.length).map((test, index) => /*#__PURE__*/_react.default.createElement("li", {
     className: "list-item",
     key: test.id
   }, /*#__PURE__*/_react.default.createElement("button", {
@@ -28386,7 +28388,7 @@ function App() {
   const [showButton, setShowButton] = (0, _react.useState)(false);
   const [retryGame, setRetryGame] = (0, _react.useState)(false);
   const [disable, setDisable] = (0, _react.useState)(false);
-  const [correct, setCorrect] = (0, _react.useState)();
+  const [correct, setCorrect] = (0, _react.useState)("");
 
   async function fetchData() {
     // Fetch the whole country
@@ -28425,7 +28427,7 @@ function App() {
   }
 
   (0, _react.useEffect)(() => {
-    fetchData(dataCountry);
+    fetchData();
   }, []);
   console.log(correct); // Answer button
 
@@ -28435,25 +28437,21 @@ function App() {
     const trueAnswer = e.target.value === correct;
 
     if (trueAnswer) {
-      // e.target.style.backgroundColor = "#60BF88"; 
-      // e.target.style.color="#FFFFFF";
-      e.target.classList.add("true");
+      // e.target.classList.add("true");
       setDisable(true);
       setLose(false);
       setShowButton(true);
       setCounter(prevState => prevState + 1);
-      return e.target.classList.remove("true");
     } else {
-      e.target.style.backgroundColor = "#EA8282";
-      e.target.style.color = "#FFFFFF";
+      e.target.classList.add("false");
       setDisable(true);
       setLose(true);
       setShowButton(true);
-      console.log(trueAnswer);
-    }
+      console.log(trueAnswer); // If the wrong is clicked, the correct will appear.
 
-    const buttonwithTheCorrectAnswer = buttons.find(button => button.value === correct);
-    buttonwithTheCorrectAnswer.classList.add("true");
+      const correctButton = buttons.find(button => button.value === correct);
+      correctButton.classList.add("true");
+    }
   } // Show the modal if the user is lost
 
 
@@ -28498,7 +28496,8 @@ function App() {
     lose: lose,
     show: show,
     letter: letter,
-    showButton: showButton
+    showButton: showButton,
+    correct: correct
   }));
 }
 
@@ -28544,7 +28543,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58863" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63436" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

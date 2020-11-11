@@ -7,7 +7,7 @@ export default function Question(props) {
             <article className="card">
                 {props.questionChoice === "Which country does this flag belong to?" ? <img src={props.randomName.flag} alt="flag" /> : ""}
                 <h3 className="question">{props.questionChoice}</h3>
-                <ul>
+                <ul className="list">
                     {props.testAnswer.sort((a, b) => a.answer.length - b.answer.length).map((test, index) => 
                         <li className="list-item" key={test.id}>
                             <button

@@ -51,10 +51,6 @@ button {
 
 
 
-/* .false {
-    background-color: rgb(226, 88, 88);
-} */ 
-
 .next,
 .button-answer {
     width: 100%;
@@ -107,9 +103,34 @@ button {
     color: #60BF88;
 }
 
-.true {
-    background-color: #60BF88;
+.false,
+.true,
+.true:hover,
+.false:hover {
     color: #FFFFFF;
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.true,
+.true:hover {
+    background-color: #60BF88;
+    background-image: url("/correct.bbe86b11.svg");
 } 
+
+.false,
+.false:hover {
+    background-color: #EA8282;
+    background-image: url("/wrong.7f7ff515.svg");
+}
+
+.button-answer2 { 
+    background-color: #FFFFFF;
+    text-align: start;
+    max-width: 400px;
+    color: rgba(96, 102, 208, 0.8);
+    border: 2px solid rgba(96, 102, 208)
+}
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

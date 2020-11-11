@@ -16,7 +16,7 @@ function App() {
     const [showButton, setShowButton] = useState(false)
     const [retryGame, setRetryGame] = useState(false);
     const [disable, setDisable] = useState(false);
-    const [correct, setCorrect] = useState()
+    const [correct, setCorrect] = useState("");
 
     async function fetchData() {
         // Fetch the whole country
@@ -55,7 +55,6 @@ function App() {
         setCorrect(data[randomIndex].name);
     }
 
-    
     // Next button
     function handleClick() {
         fetchData();
@@ -63,35 +62,33 @@ function App() {
     }
 
     useEffect(() => {
-        fetchData(dataCountry);
+        fetchData();
     }, [])
-  
- console.log(correct);
+
+    console.log(correct);
 
     // Answer button
     function handleClickAnswer(e) {
         const container = document.querySelector(".container");
-        const buttons = Array.from(container.querySelectorAll(".button-answer"))
+        const buttons = Array.from(container.querySelectorAll(".button-answer"));
         const trueAnswer = e.target.value === correct;
         if (trueAnswer) {
-            // e.target.style.backgroundColor = "#60BF88"; 
-            // e.target.style.color="#FFFFFF";
-            e.target.classList.add("true")
+            // e.target.classList.add("true");
             setDisable(true);
             setLose(false);
             setShowButton(true)
             setCounter(prevState => prevState + 1);
-            return e.target.classList.remove("true")
         } else {
-            e.target.style.backgroundColor = "#EA8282";
-            e.target.style.color="#FFFFFF";
+            e.target.classList.add("false");
             setDisable(true);
             setLose(true);
             setShowButton(true);
             console.log(trueAnswer);
+
+            // If the wrong is clicked, the correct will appear.
+            const correctButton = buttons.find(button => button.value === correct)
+            correctButton.classList.add("true")
         }
-        const buttonwithTheCorrectAnswer = buttons.find(button => button.value === correct)
-        buttonwithTheCorrectAnswer.classList.add("true")
     }
 
     // Show the modal if the user is lost
@@ -99,14 +96,14 @@ function App() {
         setShowModal(true);
     }
 
-// For retry button, everything will be reseted.
+    // For retry button, everything will be reseted.
     function retryAgain() {
-         fetchData();
-         setCounter(0);
-         setRetryGame(false);
-         setShowModal(false);
-         setDisable(false);
-     }
+        fetchData();
+        setCounter(0);
+        setRetryGame(false);
+        setShowModal(false);
+        setDisable(false);
+    }
 
     let questionChoice = "";
 
@@ -124,9 +121,9 @@ function App() {
                 <h1 className="heading">Country quiz</h1>
             </header>
             {showModal ? <ScoreModal
-            counter={counter}
-            retryAgain={retryAgain}
-            dataCountry={dataCountry}
+                counter={counter}
+                retryAgain={retryAgain}
+                dataCountry={dataCountry}
             /> :
                 <Question
                     questionChoice={questionChoice}
@@ -139,6 +136,7 @@ function App() {
                     show={show}
                     letter={letter}
                     showButton={showButton}
+                    correct={correct}
                 />
             }
         </div>
