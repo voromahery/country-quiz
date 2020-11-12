@@ -3,6 +3,7 @@ import Question from './components/Question';
 import ScoreModal from './components/ScoreModal';
 
 function App() {
+    
     // Create all necessaries variable
     const [dataCountry, setDataCountry] = useState([]);
     const [randomName, setRandomName] = useState([]);
@@ -92,8 +93,6 @@ function App() {
                     testAnswer={testAnswer}
                     isDisable={isDisable}
                     setIsDisable={setIsDisable}
-                    // islose={islose}
-                    // setIsLose={setIsLose}
                     show={show}
                     setCounter={setCounter}
                     fetchData={fetchData}

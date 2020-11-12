@@ -28329,6 +28329,9 @@ function Question(props) {
 
 
   function handleClick() {
+    const container = document.querySelector(".container");
+    const buttons = Array.from(container.querySelectorAll(".button-answer"));
+    buttons.forEach(button => button.classList.remove("true"));
     props.fetchData();
     props.setIsDisable(false);
   }
@@ -28498,9 +28501,7 @@ function App() {
     randomName: randomName,
     testAnswer: testAnswer,
     isDisable: isDisable,
-    setIsDisable: setIsDisable // islose={islose}
-    // setIsLose={setIsLose}
-    ,
+    setIsDisable: setIsDisable,
     show: show,
     setCounter: setCounter,
     fetchData: fetchData,
@@ -28550,7 +28551,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55953" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57531" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

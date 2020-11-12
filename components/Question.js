@@ -29,6 +29,9 @@ export default function Question(props) {
 
     // Next button
     function handleClick() {
+        const container = document.querySelector(".container");
+        const buttons = Array.from(container.querySelectorAll(".button-answer"));
+        buttons.forEach(button => button.classList.remove("true"));
         props.fetchData();
         props.setIsDisable(false);
     }
