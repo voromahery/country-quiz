@@ -45,7 +45,7 @@ export default function Question(props) {
                     {sortingAnswer.map((test, index) =>
                         <li className="list-item" key={test.id}>
                             <button
-                                disabled={props.disable ? "disabled" : ""}
+                                disabled={props.isDisable ? "disabled" : ""}
                                 className="button-answer"
                                 value={test.answer}
                                 id={test.answer}

@@ -28349,7 +28349,7 @@ function Question(props) {
     className: "list-item",
     key: test.id
   }, /*#__PURE__*/_react.default.createElement("button", {
-    disabled: props.disable ? "disabled" : "",
+    disabled: props.isDisable ? "disabled" : "",
     className: "button-answer",
     value: test.answer,
     id: test.answer,
@@ -28550,7 +28550,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55016" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55953" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
