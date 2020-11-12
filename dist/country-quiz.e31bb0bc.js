@@ -28285,7 +28285,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"Question.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"components/Question.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28357,7 +28357,7 @@ function Question(props) {
     onClick: handleClick
   }, "Next") : "")));
 }
-},{"react":"node_modules/react/index.js"}],"ScoreModal.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"components/ScoreModal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28402,9 +28402,9 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Question = _interopRequireDefault(require("./Question"));
+var _Question = _interopRequireDefault(require("./components/Question"));
 
-var _ScoreModal = _interopRequireDefault(require("./ScoreModal"));
+var _ScoreModal = _interopRequireDefault(require("./components/ScoreModal"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28508,7 +28508,7 @@ function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./Question":"Question.js","./ScoreModal":"ScoreModal.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./components/Question":"components/Question.js","./components/ScoreModal":"components/ScoreModal.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

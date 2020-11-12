@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Question from './Question';
-import ScoreModal from './ScoreModal';
+import Question from './components/Question';
+import ScoreModal from './components/ScoreModal';
 
 function App() {
     // Create all necessaries variable
