@@ -28298,6 +28298,37 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Question(props) {
+  const letter = ["A", "B", "C", "D"]; // Next button
+
+  function handleClick() {
+    props.fetchData();
+    props.setIsDisable(false);
+  } // Answer button
+
+
+  function handleClickAnswer(e) {
+    const container = document.querySelector(".container");
+    const buttons = Array.from(container.querySelectorAll(".button-answer"));
+    const trueAnswer = e.target.value === props.correct;
+
+    if (trueAnswer) {
+      e.target.classList.add("true");
+      props.setIsDisable(true);
+      props.setLose(false);
+      props.setShowButton(true);
+      props.setCounter(prevState => prevState + 1);
+    } else {
+      e.target.classList.add("false");
+      props.setIsDisable(true);
+      props.setLose(true);
+      props.setShowButton(true);
+      console.log(trueAnswer);
+    }
+
+    const correctButton = buttons.find(button => button.value === props.correct);
+    correctButton.classList.add("true");
+  }
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
   }, /*#__PURE__*/_react.default.createElement("article", {
@@ -28317,13 +28348,13 @@ function Question(props) {
     className: "button-answer",
     value: test.answer,
     id: test.answer,
-    onClick: props.handleClickAnswer
-  }, /*#__PURE__*/_react.default.createElement("span", null, props.letter[index]), " ", test.answer))), props.lose === true ? /*#__PURE__*/_react.default.createElement("button", {
+    onClick: handleClickAnswer
+  }, /*#__PURE__*/_react.default.createElement("span", null, letter[index]), " ", test.answer))), props.lose === true ? /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: props.show
   }, "Next") : "", props.showButton === true && props.lose === false ? /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
-    onClick: props.handleClick
+    onClick: handleClick
   }, "Next") : "")));
 }
 },{"react":"node_modules/react/index.js"}],"ScoreModal.js":[function(require,module,exports) {
@@ -28334,11 +28365,22 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = ScoreModal;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function ScoreModal(props) {
+  const [isRetryGame, setIsRetryGame] = (0, _react.useState)(false); // For retry button, everything will be reseted.
+
+  function retryAgain() {
+    props.fetchData();
+    setIsRetryGame(false);
+    props.setIsShowModal(false);
+    props.setIsDisable(false);
+  }
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "card"
   }, /*#__PURE__*/_react.default.createElement("h1", {
@@ -28347,7 +28389,7 @@ function ScoreModal(props) {
     className: "score"
   }, props.counter), " correct answer"), /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
-    onClick: props.retryAgain
+    onClick: retryAgain
   }, "Retry"));
 }
 },{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
@@ -28381,14 +28423,12 @@ function App() {
   }];
   const [randomQuestion, setRandomQuestion] = (0, _react.useState)([]);
   const [testAnswer, setTestAnswer] = (0, _react.useState)([]);
-  const letter = ["A", "B", "C", "D"];
   const [lose, setLose] = (0, _react.useState)(false);
   const [counter, setCounter] = (0, _react.useState)(0);
-  const [showModal, setShowModal] = (0, _react.useState)(false);
   const [showButton, setShowButton] = (0, _react.useState)(false);
-  const [retryGame, setRetryGame] = (0, _react.useState)(false);
-  const [disable, setDisable] = (0, _react.useState)(false);
+  const [isDisable, setIsDisable] = (0, _react.useState)(false);
   const [correct, setCorrect] = (0, _react.useState)("");
+  const [isShowModal, setIsShowModal] = (0, _react.useState)(false);
 
   async function fetchData() {
     // Fetch the whole country
@@ -28418,53 +28458,14 @@ function App() {
       id: 4
     }]);
     setCorrect(data[randomIndex].name);
-  } // Next button
-
-
-  function handleClick() {
-    fetchData();
-    setDisable(false);
   }
 
   (0, _react.useEffect)(() => {
     fetchData();
-  }, []); // Answer button
-
-  function handleClickAnswer(e) {
-    const container = document.querySelector(".container");
-    const buttons = Array.from(container.querySelectorAll(".button-answer"));
-    const trueAnswer = e.target.value === correct;
-
-    if (trueAnswer) {
-      e.target.classList.add("true");
-      setDisable(true);
-      setLose(false);
-      setShowButton(true);
-      setCounter(prevState => prevState + 1);
-    } else {
-      e.target.classList.add("false");
-      setDisable(true);
-      setLose(true);
-      setShowButton(true);
-      console.log(trueAnswer);
-    }
-
-    const correctButton = buttons.find(button => button.value === correct);
-    correctButton.classList.add("true");
-  } // Show the modal if the user is lost
-
+  }, []); // Show the modal if the user is lost
 
   function show() {
-    setShowModal(true);
-  } // For retry button, everything will be reseted.
-
-
-  function retryAgain() {
-    fetchData();
-    setCounter(0);
-    setRetryGame(false);
-    setShowModal(false);
-    setDisable(false);
+    setIsShowModal(true);
   }
 
   let questionChoice = "";
@@ -28481,20 +28482,25 @@ function App() {
     className: "container"
   }, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", {
     className: "heading"
-  }, "Country quiz")), showModal ? /*#__PURE__*/_react.default.createElement(_ScoreModal.default, {
+  }, "Country quiz")), isShowModal ? /*#__PURE__*/_react.default.createElement(_ScoreModal.default, {
     counter: counter,
-    retryAgain: retryAgain,
-    dataCountry: dataCountry
+    dataCountry: dataCountry,
+    fetchData: fetchData,
+    setCounter: setCounter,
+    setIsShowModal: setIsShowModal,
+    setIsDisable: setIsDisable
   }) : /*#__PURE__*/_react.default.createElement(_Question.default, {
     questionChoice: questionChoice,
     randomName: randomName,
     testAnswer: testAnswer,
-    disable: disable,
-    handleClickAnswer: handleClickAnswer,
-    handleClick: handleClick,
+    isDisable: isDisable,
+    setIsDisable: setIsDisable,
     lose: lose,
+    setLose: setLose,
     show: show,
-    letter: letter,
+    setCounter: setCounter,
+    fetchData: fetchData,
+    setShowButton: setShowButton,
     showButton: showButton,
     correct: correct
   }));
@@ -28542,7 +28548,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49524" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53898" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

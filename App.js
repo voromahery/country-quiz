@@ -9,14 +9,12 @@ function App() {
     const question = [{ text: "is the capital of ?" }, { text: "Which country does this flag belong to?" }];
     const [randomQuestion, setRandomQuestion] = useState([]);
     const [testAnswer, setTestAnswer] = useState([]);
-    const letter = ["A", "B", "C", "D"];
     const [lose, setLose] = useState(false);
     const [counter, setCounter] = useState(0);
-    const [showModal, setShowModal] = useState(false);
     const [showButton, setShowButton] = useState(false)
-    const [retryGame, setRetryGame] = useState(false);
-    const [disable, setDisable] = useState(false);
+    const [isDisable, setIsDisable] = useState(false);
     const [correct, setCorrect] = useState("");
+    const [isShowModal, setIsShowModal] = useState(false);
 
     async function fetchData() {
         // Fetch the whole country
@@ -54,52 +52,18 @@ function App() {
         ]);
         setCorrect(data[randomIndex].name);
     }
-    
-    // Next button
-    function handleClick() {
-        fetchData();
-        setDisable(false);
-    }
+
 
     useEffect(() => {
         fetchData();
     }, [])
-  
-    // Answer button
-    function handleClickAnswer(e) {
-        const container = document.querySelector(".container");
-        const buttons = Array.from(container.querySelectorAll(".button-answer"));
-        const trueAnswer = e.target.value === correct;
-        if (trueAnswer) {
-            e.target.classList.add("true");
-            setDisable(true);
-            setLose(false);
-            setShowButton(true)
-            setCounter(prevState => prevState + 1);
-        } else {
-            e.target.classList.add("false");
-            setDisable(true);
-            setLose(true);
-            setShowButton(true);
-            console.log(trueAnswer);
-        }
-        const correctButton = buttons.find(button => button.value === correct)
-        correctButton.classList.add("true")
-    }
+
 
     // Show the modal if the user is lost
     function show() {
-        setShowModal(true);
+        setIsShowModal(true);
     }
 
-// For retry button, everything will be reseted.
-    function retryAgain() {
-         fetchData();
-         setCounter(0);
-         setRetryGame(false);
-         setShowModal(false);
-         setDisable(false);
-     }
 
     let questionChoice = "";
 
@@ -116,21 +80,26 @@ function App() {
             <header>
                 <h1 className="heading">Country quiz</h1>
             </header>
-            {showModal ? <ScoreModal
-            counter={counter}
-            retryAgain={retryAgain}
-            dataCountry={dataCountry}
+            {isShowModal ? <ScoreModal
+                counter={counter}
+                dataCountry={dataCountry}
+                fetchData={fetchData}
+                setCounter={setCounter}
+                setIsShowModal={setIsShowModal}
+                setIsDisable={setIsDisable}
             /> :
                 <Question
                     questionChoice={questionChoice}
                     randomName={randomName}
                     testAnswer={testAnswer}
-                    disable={disable}
-                    handleClickAnswer={handleClickAnswer}
-                    handleClick={handleClick}
+                    isDisable={isDisable}
+                    setIsDisable={setIsDisable}
                     lose={lose}
+                    setLose={setLose}
                     show={show}
-                    letter={letter}
+                    setCounter={setCounter}
+                    fetchData={fetchData}
+                    setShowButton={setShowButton}
                     showButton={showButton}
                     correct={correct}
                 />
