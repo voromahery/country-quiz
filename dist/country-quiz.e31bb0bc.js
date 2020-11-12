@@ -28293,18 +28293,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Question;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function Question(props) {
-  const letter = ["A", "B", "C", "D"]; // Next button
-
-  function handleClick() {
-    props.fetchData();
-    props.setIsDisable(false);
-  } // Answer button
-
+  const letter = ["A", "B", "C", "D"];
+  const [isShowButton, setIsShowButton] = (0, _react.useState)(false);
+  const [isLose, setIsLose] = (0, _react.useState)(false); // Answer button
 
   function handleClickAnswer(e) {
     const container = document.querySelector(".container");
@@ -28314,21 +28312,28 @@ function Question(props) {
     if (trueAnswer) {
       e.target.classList.add("true");
       props.setIsDisable(true);
-      props.setIsLose(false);
-      props.setShowButton(true);
+      setIsLose(false);
+      setIsShowButton(true);
       props.setCounter(prevState => prevState + 1);
     } else {
       e.target.classList.add("false");
       props.setIsDisable(true);
-      props.setIsLose(true);
-      props.setShowButton(true);
+      setIsLose(true);
+      setIsShowButton(true);
       console.log(trueAnswer);
     }
 
     const correctButton = buttons.find(button => button.value === props.correct);
     correctButton.classList.add("true");
+  } // Next button
+
+
+  function handleClick() {
+    props.fetchData();
+    props.setIsDisable(false);
   }
 
+  const sortingAnswer = props.testAnswer.sort((a, b) => a.answer.length - b.answer.length);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
   }, /*#__PURE__*/_react.default.createElement("article", {
@@ -28340,7 +28345,7 @@ function Question(props) {
     className: "question"
   }, props.questionChoice), /*#__PURE__*/_react.default.createElement("ul", {
     className: "list"
-  }, props.testAnswer.sort((a, b) => a.answer.length - b.answer.length).map((test, index) => /*#__PURE__*/_react.default.createElement("li", {
+  }, sortingAnswer.map((test, index) => /*#__PURE__*/_react.default.createElement("li", {
     className: "list-item",
     key: test.id
   }, /*#__PURE__*/_react.default.createElement("button", {
@@ -28349,10 +28354,10 @@ function Question(props) {
     value: test.answer,
     id: test.answer,
     onClick: handleClickAnswer
-  }, /*#__PURE__*/_react.default.createElement("span", null, letter[index]), " ", test.answer))), props.isLose === true ? /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("span", null, letter[index]), " ", test.answer))), isLose === true ? /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: props.show
-  }, "Next") : "", props.showButton === true && props.islose === false ? /*#__PURE__*/_react.default.createElement("button", {
+  }, "Next") : "", isShowButton === true && isLose === false ? /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: handleClick
   }, "Next") : "")));
@@ -28423,9 +28428,7 @@ function App() {
   }];
   const [randomQuestion, setRandomQuestion] = (0, _react.useState)([]);
   const [testAnswer, setTestAnswer] = (0, _react.useState)([]);
-  const [islose, setIsLose] = (0, _react.useState)(false);
   const [counter, setCounter] = (0, _react.useState)(0);
-  const [showButton, setShowButton] = (0, _react.useState)(false);
   const [isDisable, setIsDisable] = (0, _react.useState)(false);
   const [correct, setCorrect] = (0, _react.useState)("");
   const [isShowModal, setIsShowModal] = (0, _react.useState)(false);
@@ -28494,14 +28497,12 @@ function App() {
     randomName: randomName,
     testAnswer: testAnswer,
     isDisable: isDisable,
-    setIsDisable: setIsDisable,
-    islose: islose,
-    setIsLose: setIsLose,
+    setIsDisable: setIsDisable // islose={islose}
+    // setIsLose={setIsLose}
+    ,
     show: show,
     setCounter: setCounter,
     fetchData: fetchData,
-    setShowButton: setShowButton,
-    showButton: showButton,
     correct: correct
   }));
 }

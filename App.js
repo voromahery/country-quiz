@@ -9,9 +9,7 @@ function App() {
     const question = [{ text: "is the capital of ?" }, { text: "Which country does this flag belong to?" }];
     const [randomQuestion, setRandomQuestion] = useState([]);
     const [testAnswer, setTestAnswer] = useState([]);
-    const [islose, setIsLose] = useState(false);
     const [counter, setCounter] = useState(0);
-    const [showButton, setShowButton] = useState(false)
     const [isDisable, setIsDisable] = useState(false);
     const [correct, setCorrect] = useState("");
     const [isShowModal, setIsShowModal] = useState(false);
@@ -94,13 +92,11 @@ function App() {
                     testAnswer={testAnswer}
                     isDisable={isDisable}
                     setIsDisable={setIsDisable}
-                    islose={islose}
-                    setIsLose={setIsLose}
+                    // islose={islose}
+                    // setIsLose={setIsLose}
                     show={show}
                     setCounter={setCounter}
                     fetchData={fetchData}
-                    setShowButton={setShowButton}
-                    showButton={showButton}
                     correct={correct}
                 />
             }
