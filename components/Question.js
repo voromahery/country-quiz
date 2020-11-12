@@ -36,13 +36,13 @@ export default function Question(props) {
         props.setIsDisable(false);
     }
 
-
+    // Sort the random answer by the length of the letter
     const sortingAnswer = props.testAnswer.sort((a, b) => a.answer.length - b.answer.length);
 
     return (
         <div className="container">
             <article className="card">
-                {props.questionChoice === "Which country does this flag belong to?" ? <img src={props.randomName.flag} alt="flag" /> : ""}
+                {props.questionChoice === "Which country does this flag belong to?" ? <img src={props.randomName.flag} alt="flag" className="flag" /> : ""}
                 <h3 className="question">{props.questionChoice}</h3>
                 <ul className="list">
                     {sortingAnswer.map((test, index) =>
@@ -54,7 +54,7 @@ export default function Question(props) {
                                 id={test.answer}
                                 onClick={handleClickAnswer}
                             >
-                                <span>{letter[index]}</span> {test.answer}
+                                <span className="letter">{letter[index]}</span> {test.answer}
                             </button>
                         </li>
                     )}

@@ -4,6 +4,17 @@ body {
     background-color: rgba(96, 102, 208, 0.7);
 }
 
+.header {
+    max-width: 464px;
+    margin: auto;
+    position: relative;
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
 .card {
     background-color: #FFFFFF;
     border-radius: 12px;
@@ -13,15 +24,40 @@ body {
     padding-bottom: 68px;
 }
 
+.score-card {
+    text-align: center;
+}
+
+button {
+    width: 100%;
+}
+
+.retry-button {
+    max-width: 209px;
+    height: 62px;
+    border: 2px solid #1D355D;
+    border-radius: 12px;
+    background-color: transparent;
+    color: #1D355D;
+}
+
 .container,
 .card {
     max-width: 464px;
     margin: auto;
 }
 
-img {
+.flag {
     max-width: 84px;
     filter: drop-shadow(0px 4px 24px rgba(0, 0, 0, 0.1));
+}
+
+.adventure {
+    background-image: url("/adventure.917964df.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 162px;
+    height: 162px;
 }
 
 .next,
@@ -76,6 +112,22 @@ button {
     max-width: 400px;
     color: rgba(96, 102, 208, 0.8);
     border: 2px solid rgba(96, 102, 208, 0.7);
+}
+
+.next,
+.button-answer {
+    font-size: 18px;
+}
+
+.letter,
+.question {
+    font-size: 24px;
+}
+
+.letter,
+.button-answer,
+.next {
+    font-weight: 500;
 }
 
 .button-answer:hover,
@@ -139,6 +191,19 @@ button {
     max-width: 400px;
     color: rgba(96, 102, 208, 0.8);
     border: 2px solid rgba(96, 102, 208)
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #F2F2F2;
+    font-weight: 600;
 }
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

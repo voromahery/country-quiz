@@ -14,10 +14,10 @@ function retryAgain() {
 }
 
     return (
-        <div className="card">
+        <div className="card score-card">
             <h1 className="heading-result">Results</h1>
             <p>You got <span className="score">{props.counter}</span> correct answer</p>
-            <button className="next" onClick={retryAgain}>Retry</button>
+            <button className="retry-button" onClick={retryAgain}>Retry</button>
         </div>
     )
 }

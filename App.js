@@ -76,9 +76,6 @@ function App() {
 
     return (
         <div className="container">
-            <header>
-                <h1 className="heading">Country quiz</h1>
-            </header>
             {isShowModal ? <ScoreModal
                 counter={counter}
                 dataCountry={dataCountry}

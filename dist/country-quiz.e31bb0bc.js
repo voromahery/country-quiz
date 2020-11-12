@@ -28334,7 +28334,8 @@ function Question(props) {
     buttons.forEach(button => button.classList.remove("true"));
     props.fetchData();
     props.setIsDisable(false);
-  }
+  } // Sort the random answer by the length of the letter
+
 
   const sortingAnswer = props.testAnswer.sort((a, b) => a.answer.length - b.answer.length);
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -28343,7 +28344,8 @@ function Question(props) {
     className: "card"
   }, props.questionChoice === "Which country does this flag belong to?" ? /*#__PURE__*/_react.default.createElement("img", {
     src: props.randomName.flag,
-    alt: "flag"
+    alt: "flag",
+    className: "flag"
   }) : "", /*#__PURE__*/_react.default.createElement("h3", {
     className: "question"
   }, props.questionChoice), /*#__PURE__*/_react.default.createElement("ul", {
@@ -28357,7 +28359,9 @@ function Question(props) {
     value: test.answer,
     id: test.answer,
     onClick: handleClickAnswer
-  }, /*#__PURE__*/_react.default.createElement("span", null, letter[index]), " ", test.answer))), isLose === true ? /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "letter"
+  }, letter[index]), " ", test.answer))), isLose === true ? /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: props.show
   }, "Next") : "", isShowButton === true && isLose === false ? /*#__PURE__*/_react.default.createElement("button", {
@@ -28391,13 +28395,13 @@ function ScoreModal(props) {
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "card"
+    className: "card score-card"
   }, /*#__PURE__*/_react.default.createElement("h1", {
     className: "heading-result"
   }, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", /*#__PURE__*/_react.default.createElement("span", {
     className: "score"
   }, props.counter), " correct answer"), /*#__PURE__*/_react.default.createElement("button", {
-    className: "next",
+    className: "retry-button",
     onClick: retryAgain
   }, "Retry"));
 }
@@ -28487,9 +28491,7 @@ function App() {
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", {
-    className: "heading"
-  }, "Country quiz")), isShowModal ? /*#__PURE__*/_react.default.createElement(_ScoreModal.default, {
+  }, isShowModal ? /*#__PURE__*/_react.default.createElement(_ScoreModal.default, {
     counter: counter,
     dataCountry: dataCountry,
     fetchData: fetchData,
@@ -28551,7 +28553,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57531" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57703" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
