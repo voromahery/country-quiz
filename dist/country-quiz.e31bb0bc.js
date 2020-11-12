@@ -28314,13 +28314,13 @@ function Question(props) {
     if (trueAnswer) {
       e.target.classList.add("true");
       props.setIsDisable(true);
-      props.setLose(false);
+      props.setIsLose(false);
       props.setShowButton(true);
       props.setCounter(prevState => prevState + 1);
     } else {
       e.target.classList.add("false");
       props.setIsDisable(true);
-      props.setLose(true);
+      props.setIsLose(true);
       props.setShowButton(true);
       console.log(trueAnswer);
     }
@@ -28349,10 +28349,10 @@ function Question(props) {
     value: test.answer,
     id: test.answer,
     onClick: handleClickAnswer
-  }, /*#__PURE__*/_react.default.createElement("span", null, letter[index]), " ", test.answer))), props.lose === true ? /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("span", null, letter[index]), " ", test.answer))), props.isLose === true ? /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: props.show
-  }, "Next") : "", props.showButton === true && props.lose === false ? /*#__PURE__*/_react.default.createElement("button", {
+  }, "Next") : "", props.showButton === true && props.islose === false ? /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: handleClick
   }, "Next") : "")));
@@ -28423,7 +28423,7 @@ function App() {
   }];
   const [randomQuestion, setRandomQuestion] = (0, _react.useState)([]);
   const [testAnswer, setTestAnswer] = (0, _react.useState)([]);
-  const [lose, setLose] = (0, _react.useState)(false);
+  const [islose, setIsLose] = (0, _react.useState)(false);
   const [counter, setCounter] = (0, _react.useState)(0);
   const [showButton, setShowButton] = (0, _react.useState)(false);
   const [isDisable, setIsDisable] = (0, _react.useState)(false);
@@ -28495,8 +28495,8 @@ function App() {
     testAnswer: testAnswer,
     isDisable: isDisable,
     setIsDisable: setIsDisable,
-    lose: lose,
-    setLose: setLose,
+    islose: islose,
+    setIsLose: setIsLose,
     show: show,
     setCounter: setCounter,
     fetchData: fetchData,
@@ -28548,7 +28548,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53898" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55016" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

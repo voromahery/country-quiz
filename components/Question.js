@@ -17,13 +17,13 @@ export default function Question(props) {
             if (trueAnswer) {
                 e.target.classList.add("true");
                 props.setIsDisable(true);
-                props.setLose(false);
+                props.setIsLose(false);
                 props.setShowButton(true)
                 props.setCounter(prevState => prevState + 1);
             } else {
                 e.target.classList.add("false");
                 props.setIsDisable(true);
-                props.setLose(true);
+                props.setIsLose(true);
                 props.setShowButton(true);
                 console.log(trueAnswer);
             }
@@ -50,8 +50,8 @@ export default function Question(props) {
                             </button>
                         </li>
                     )}
-                    {props.lose === true ?<button className="next" onClick={props.show}>Next</button>: ""}
-                    {props.showButton===true && props.lose===false ?<button className="next" onClick={handleClick}>Next</button>:""}
+                    {props.isLose === true ?<button className="next" onClick={props.show}>Next</button>: ""}
+                    {props.showButton===true && props.islose===false ?<button className="next" onClick={handleClick}>Next</button>:""}
                 </ul>
             </article>
         </div>

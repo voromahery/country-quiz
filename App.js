@@ -9,7 +9,7 @@ function App() {
     const question = [{ text: "is the capital of ?" }, { text: "Which country does this flag belong to?" }];
     const [randomQuestion, setRandomQuestion] = useState([]);
     const [testAnswer, setTestAnswer] = useState([]);
-    const [lose, setLose] = useState(false);
+    const [islose, setIsLose] = useState(false);
     const [counter, setCounter] = useState(0);
     const [showButton, setShowButton] = useState(false)
     const [isDisable, setIsDisable] = useState(false);
@@ -94,8 +94,8 @@ function App() {
                     testAnswer={testAnswer}
                     isDisable={isDisable}
                     setIsDisable={setIsDisable}
-                    lose={lose}
-                    setLose={setLose}
+                    islose={islose}
+                    setIsLose={setIsLose}
                     show={show}
                     setCounter={setCounter}
                     fetchData={fetchData}
