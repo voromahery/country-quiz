@@ -28285,7 +28285,9 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"components/Question.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"icons/adventure.svg":[function(require,module,exports) {
+module.exports = "/adventure.917964df.svg";
+},{}],"components/Question.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28294,6 +28296,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = Question;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _adventure = _interopRequireDefault(require("../icons/adventure.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -28340,7 +28346,17 @@ function Question(props) {
   const sortingAnswer = props.testAnswer.sort((a, b) => a.answer.length - b.answer.length);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement("article", {
+  }, /*#__PURE__*/_react.default.createElement("header", {
+    className: "header"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "header-wrapper"
+  }, /*#__PURE__*/_react.default.createElement("h1", {
+    className: "heading"
+  }, "Country quiz"), /*#__PURE__*/_react.default.createElement("img", {
+    src: _adventure.default,
+    className: "adventure",
+    alt: "adventure"
+  }))), /*#__PURE__*/_react.default.createElement("article", {
     className: "card"
   }, props.questionChoice === "Which country does this flag belong to?" ? /*#__PURE__*/_react.default.createElement("img", {
     src: props.randomName.flag,
@@ -28369,7 +28385,9 @@ function Question(props) {
     onClick: handleClick
   }, "Next") : "")));
 }
-},{"react":"node_modules/react/index.js"}],"components/ScoreModal.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../icons/adventure.svg":"icons/adventure.svg"}],"icons/win.svg":[function(require,module,exports) {
+module.exports = "/win.01a8852d.svg";
+},{}],"components/ScoreModal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28378,6 +28396,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = ScoreModal;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _win = _interopRequireDefault(require("../icons/win.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -28394,18 +28416,35 @@ function ScoreModal(props) {
     props.setCounter(0);
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "card score-card"
+  let scoreLetter = "";
+
+  if (props.counter === 0 || props.counter === 1) {
+    scoreLetter = "answer";
+  } else {
+    scoreLetter = "answers";
+  }
+
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("header", {
+    className: "header"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "header-wrapper"
   }, /*#__PURE__*/_react.default.createElement("h1", {
+    className: "heading"
+  }, "Country quiz"))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "card score-card"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _win.default,
+    alt: "score"
+  }), /*#__PURE__*/_react.default.createElement("h1", {
     className: "heading-result"
   }, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", /*#__PURE__*/_react.default.createElement("span", {
     className: "score"
-  }, props.counter), " correct answer"), /*#__PURE__*/_react.default.createElement("button", {
+  }, props.counter), " correct ", scoreLetter), /*#__PURE__*/_react.default.createElement("button", {
     className: "retry-button",
     onClick: retryAgain
-  }, "Retry"));
+  }, "Retry")));
 }
-},{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../icons/win.svg":"icons/win.svg"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28553,7 +28592,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57703" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55481" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

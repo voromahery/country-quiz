@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import adventure from "../icons/adventure.svg";
+
 
 export default function Question(props) {
     const letter = ["A", "B", "C", "D"];
@@ -41,6 +43,12 @@ export default function Question(props) {
 
     return (
         <div className="container">
+            <header className="header">
+                <div className="header-wrapper">
+                    <h1 className="heading">Country quiz</h1>
+                    <img src={adventure} className="adventure" alt="adventure" />
+                </div>
+            </header>
             <article className="card">
                 {props.questionChoice === "Which country does this flag belong to?" ? <img src={props.randomName.flag} alt="flag" className="flag" /> : ""}
                 <h3 className="question">{props.questionChoice}</h3>
