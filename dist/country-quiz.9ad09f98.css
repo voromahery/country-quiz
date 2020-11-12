@@ -1,5 +1,39 @@
+@font-face {
+    font-family: "myPoppins";
+    src: url("/poppins-normal.8cdf2d84.woff2"),
+         url("/poppins-normal.e8c724f3.woff");
+         font-weight: 400;
+}
+
+@font-face {
+    font-family: "myPoppins";
+    src: url("/poppins-medium.f3a0b5cc.woff2"),
+         url("/poppins-medium.87f61549.woff");
+         font-weight: 500;
+}
+
+@font-face {
+    font-family: "myPoppins";
+    src: url("/poppins-semibold.264c4215.woff2"),
+         url("/poppins-semibold.0b4167f9.woff");
+         font-weight: 600;
+}
+
+@font-face {
+    font-family: "myPoppins";
+    src: url("/poppins-bold.49767633.woff2"),
+         url("/poppins-bold.e7e7e085.woff");
+         font-weight: 700;
+}
+
+@font-face {
+    font-family: "myMontserrat";
+    src: url("/montserrat-semibold.24b9a2ca.woff2"),
+         url("/montserrat-semibold.93519889.woff");
+    font-weight: 600;
+}
 body {
-    font-family: 'Poppins';
+    font-family: 'myPoppins';
     margin: auto;
     background-color: rgba(96, 102, 208, 0.7);
 }
@@ -13,6 +47,11 @@ body {
 .header-wrapper {
     display: flex;
     justify-content: space-between;
+}
+
+.header-wrapper > .heading {
+    color: #F2F2F2;
+    text-transform: uppercase;
 }
 
 .card {
@@ -145,11 +184,6 @@ button {
     color: #2F527B;
 }
 
-.heading {
-    color: #F2F2F2;
-    text-transform: uppercase;
-}
-
 .heading-result,
 .score {
     font-weight: 700;
@@ -202,10 +236,11 @@ footer {
 }
 
 footer a {
+    font-family: "myMontserrat";
     text-decoration: none;
     font-size: 14px;
     color: #F2F2F2;
     font-weight: 600;
 }
 
-/*# sourceMappingURL=/style.e308ff8e.css.map */
+/*# sourceMappingURL=/country-quiz.9ad09f98.css.map */

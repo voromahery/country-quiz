@@ -1,5 +1,5 @@
 body {
-    font-family: 'Poppins';
+    font-family: 'myPoppins';
     margin: auto;
     background-color: rgba(96, 102, 208, 0.7);
 }
@@ -13,6 +13,11 @@ body {
 .header-wrapper {
     display: flex;
     justify-content: space-between;
+}
+
+.header-wrapper > .heading {
+    color: #F2F2F2;
+    text-transform: uppercase;
 }
 
 .card {
@@ -39,6 +44,7 @@ button {
     border-radius: 12px;
     background-color: transparent;
     color: #1D355D;
+    font-weight: 600;
 }
 
 .container,
@@ -115,7 +121,8 @@ button {
 }
 
 .next,
-.button-answer {
+.button-answer,
+.retry-button {
     font-size: 18px;
 }
 
@@ -141,11 +148,6 @@ button {
 
 .question {
     color: #2F527B;
-}
-
-.heading {
-    color: #F2F2F2;
-    text-transform: uppercase;
 }
 
 .heading-result,
@@ -200,6 +202,7 @@ footer {
 }
 
 footer a {
+    font-family: "myMontserrat";
     text-decoration: none;
     font-size: 14px;
     color: #F2F2F2;
