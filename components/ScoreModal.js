@@ -10,6 +10,7 @@ function retryAgain() {
     setIsRetryGame(false);
     props.setIsShowModal(false);
     props.setIsDisable(false);
+    props.setCounter(0);
 }
 
     return (

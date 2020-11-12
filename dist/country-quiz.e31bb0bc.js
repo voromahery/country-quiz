@@ -28384,6 +28384,7 @@ function ScoreModal(props) {
     setIsRetryGame(false);
     props.setIsShowModal(false);
     props.setIsDisable(false);
+    props.setCounter(0);
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
