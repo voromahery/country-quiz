@@ -38,9 +38,17 @@ body {
     background-color: rgba(96, 102, 208, 1);
 }
 
-.header {
+#root {
     max-width: 464px;
     margin: auto;
+}
+
+.adventure,
+picture {
+    display: none
+}
+
+.header {
     position: relative;
 }
 
@@ -67,7 +75,8 @@ body {
     text-align: center;
 }
 
-button {
+button,
+.flag {
     width: 100%;
 }
 
@@ -81,19 +90,14 @@ button {
     font-weight: 600;
 }
 
-.container,
-.card {
+/* .card {
     max-width: 464px;
     margin: auto;
-}
+} */
 
 .flag {
     max-width: 84px;
     filter: drop-shadow(0px 4px 24px rgba(0, 0, 0, 0.1));
-}
-
-.adventure {
-    width: 162px;
 }
 
 .next,
@@ -142,12 +146,16 @@ button {
 .button-answer {
     background-color: #FFFFFF;
     text-align: start;
-    max-width: 400px;
     color: rgba(96, 102, 208, 0.8);
     border: 2px solid rgba(96, 102, 208, 0.7);
     display: flex;
     align-items: center;
 }
+
+.button-answer::before {
+    background-image: element(character);
+}
+
 
 .next,
 .button-answer,
@@ -192,6 +200,15 @@ button {
 .score {
     font-size: 46px;
     color: #60BF88;
+}
+
+.button-answer,
+.button-answer:hover,
+.false,
+.true,
+.true:hover,
+.false:hover {
+    transition: all ease-in .2s;
 }
 
 .false,
@@ -239,6 +256,35 @@ footer a {
     font-size: 14px;
     color: #F2F2F2;
     font-weight: 600;
+}
+
+@media (min-width: 350px) {
+    picture,
+    .adventure {
+        display: block;
+    }
+
+    picture {
+        position: relative;
+        width: 100%;
+        max-width: 162px;
+    }
+    
+    .adventure {
+        width: 100%;
+        position: absolute;
+        max-width: 162px;
+        top: 45%;
+        right: 0;
+    }
+    
+}
+
+
+@media (min-width: 420px) {
+    .adventure {
+        top: 12%;
+    }
 }
 
 /*# sourceMappingURL=/country-quiz.9ad09f98.css.map */

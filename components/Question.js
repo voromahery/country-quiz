@@ -23,11 +23,11 @@ export default function Question(props) {
             setIsShowButton(true)
             props.setCounter(prevState => prevState + 1);
 
-        } 
+        }
         if (!trueAnswer) {
             const wrongAnswer = document.createElement("img");
             e.target.classList.add("false");
-            wrongAnswer.src=wrongIcon;
+            wrongAnswer.src = wrongIcon;
             e.target.appendChild(wrongAnswer);
             wrongAnswer.classList.add("response-icon");
             props.setIsDisable(true);
@@ -62,7 +62,9 @@ export default function Question(props) {
             <header className="header">
                 <div className="header-wrapper">
                     <h1 className="heading">Country quiz</h1>
-                    <img src={adventure} className="adventure" alt="adventure" />
+                    <picture>
+                        <img src={adventure} className="adventure" alt="adventure" />
+                    </picture>
                 </div>
             </header>
             <article className="card">

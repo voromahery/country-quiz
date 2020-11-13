@@ -28376,11 +28376,11 @@ function Question(props) {
     className: "header-wrapper"
   }, /*#__PURE__*/_react.default.createElement("h1", {
     className: "heading"
-  }, "Country quiz"), /*#__PURE__*/_react.default.createElement("img", {
+  }, "Country quiz"), /*#__PURE__*/_react.default.createElement("picture", null, /*#__PURE__*/_react.default.createElement("img", {
     src: _adventure.default,
     className: "adventure",
     alt: "adventure"
-  }))), /*#__PURE__*/_react.default.createElement("article", {
+  })))), /*#__PURE__*/_react.default.createElement("article", {
     className: "card"
   }, props.questionChoice === "Which country does this flag belong to?" ? /*#__PURE__*/_react.default.createElement("img", {
     src: props.randomName.flag,
