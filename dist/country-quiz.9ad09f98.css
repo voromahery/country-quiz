@@ -152,11 +152,6 @@ button {
     align-items: center;
 }
 
-.button-answer::before {
-    background-image: element(character);
-}
-
-
 .next,
 .button-answer,
 .retry-button {
@@ -202,7 +197,6 @@ button {
     color: #60BF88;
 }
 
-.button-answer,
 .button-answer:hover,
 .false,
 .true,
@@ -242,6 +236,7 @@ button {
 .incorrect-icon {
     max-width: 20px;
     margin-left: auto;
+    margin-right: 19px;
 }
 
 /* Footer */
