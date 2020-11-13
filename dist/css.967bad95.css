@@ -36,10 +36,12 @@ body {
     font-family: 'myPoppins', Arial, Helvetica, sans-serif;
     margin: auto;
     background-color: rgba(96, 102, 208, 1);
-    background-image: url("/background.886c3c39.png");
+    background-image: url("/background.0063873b.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 #root {
