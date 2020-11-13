@@ -36,6 +36,10 @@ body {
     font-family: 'myPoppins', Arial, Helvetica, sans-serif;
     margin: auto;
     background-color: rgba(96, 102, 208, 1);
+    background-image: url("/background.886c3c39.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    align-items: center;
 }
 
 #root {
@@ -169,21 +173,6 @@ picture {
 .score {
     font-size: 30px;
     color: #60BF88;
-}
-
-
-/* Footer */
-
-footer {
-    text-align: center;
-}
-
-footer a {
-    font-family: "myMontserrat", Arial, Helvetica, sans-serif;
-    text-decoration: none;
-    font-size: 14px;
-    color: #F2F2F2;
-    font-weight: 600;
 }
 
 @media (min-width: 350px) {
@@ -335,5 +324,18 @@ button {
     }
 }
 
+
+
+footer {
+    text-align: center;
+}
+
+footer a {
+    font-family: "myMontserrat", Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 14px;
+    color: #F2F2F2;
+    font-weight: 600;
+}
 
 /*# sourceMappingURL=/css.967bad95.css.map */
