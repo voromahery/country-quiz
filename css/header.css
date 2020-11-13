@@ -1,0 +1,29 @@
+.header {
+    position: relative;
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-wrapper > .heading {
+    color: #F2F2F2;
+    text-transform: uppercase;
+}
+
+.heading-result,
+.score {
+    font-weight: 700;
+}
+
+.heading-result {
+    font-size: 24px;
+    color: #1D355D;
+}
+
+@media (min-width: 350px) {
+    .heading-result {
+        font-size: 48px;
+    }
+}

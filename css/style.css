@@ -1,0 +1,72 @@
+.list-item {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 68px;
+    padding-bottom: 68px;
+}
+
+.score-card {
+    text-align: center;
+}
+
+.letter {
+    font-size: 18px;
+    margin: 10px;
+}
+
+.question {
+    color: #2F527B;
+    font-size: 16px;
+}
+
+.score-text {
+    font-size: 16px;
+    color: #1D355D;
+}
+
+.score {
+    font-size: 30px;
+    color: #60BF88;
+}
+
+
+/* Footer */
+
+footer {
+    text-align: center;
+}
+
+footer a {
+    font-family: "myMontserrat", Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 14px;
+    color: #F2F2F2;
+    font-weight: 600;
+}
+
+@media (min-width: 350px) {
+    .letter {
+        margin: 19px;
+        margin-right: 46px;
+    }
+
+    .letter,
+    .question {
+        font-size: 24px;
+    }
+
+    .score-text {
+        font-size: 18px;
+    }
+
+    .score {
+        font-size: 46px;
+    }
+}

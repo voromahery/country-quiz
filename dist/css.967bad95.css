@@ -50,13 +50,10 @@ ul {
     margin: 0;
 }
 
-.list-item {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
 
-.list-item span {
-    margin: 19px;
+button,
+img {
+    width: 100%;
 }
 
 .header {
@@ -73,26 +70,20 @@ ul {
     text-transform: uppercase;
 }
 
-
-
-.card {
-    background-color: #FFFFFF;
-    border-radius: 12px;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-top: 68px;
-    padding-bottom: 68px;
+.heading-result,
+.score {
+    font-weight: 700;
 }
 
-.score-card {
-    text-align: center;
+.heading-result {
+    font-size: 24px;
+    color: #1D355D;
 }
 
-/* IMAGES */
-
-button,
-img {
-    width: 100%;
+@media (min-width: 350px) {
+    .heading-result {
+        font-size: 48px;
+    }
 }
 
 .adventure,
@@ -108,8 +99,111 @@ picture {
 }
 
 .flag {
-    max-width: 84px;
+    max-width: 32px;
     filter: drop-shadow(0px 4px 24px rgba(0, 0, 0, 0.1));
+}
+
+@media (min-width: 350px) {
+    picture,
+    .adventure {
+        display: block;
+    }
+
+    .flag {
+        max-width: 84px;
+    }
+
+    picture {
+        position: relative;
+        width: 100%;
+        max-width: 162px;
+    }
+    
+    .adventure {
+        width: 100%;
+        position: absolute;
+        max-width: 162px;
+        top: 45%;
+        right: 0;
+    }
+}
+
+@media (min-width: 420px) {
+    .adventure {
+        top: 12%;
+    }
+}
+.list-item {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 68px;
+    padding-bottom: 68px;
+}
+
+.score-card {
+    text-align: center;
+}
+
+.letter {
+    font-size: 18px;
+    margin: 10px;
+}
+
+.question {
+    color: #2F527B;
+    font-size: 16px;
+}
+
+.score-text {
+    font-size: 16px;
+    color: #1D355D;
+}
+
+.score {
+    font-size: 30px;
+    color: #60BF88;
+}
+
+
+/* Footer */
+
+footer {
+    text-align: center;
+}
+
+footer a {
+    font-family: "myMontserrat", Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 14px;
+    color: #F2F2F2;
+    font-weight: 600;
+}
+
+@media (min-width: 350px) {
+    .letter {
+        margin: 19px;
+        margin-right: 46px;
+    }
+
+    .letter,
+    .question {
+        font-size: 24px;
+    }
+
+    .score-text {
+        font-size: 18px;
+    }
+
+    .score {
+        font-size: 46px;
+    }
 }
 
 /* BUTTONS */
@@ -119,15 +213,14 @@ button {
 }
 
 .retry-button {
-    max-width: 209px;
-    height: 62px;
+    max-width: 150px;
+    height: 45px;
     border: 2px solid #1D355D;
     border-radius: 12px;
     background-color: transparent;
     color: #1D355D;
     font-weight: 600;
 }
-
 
 .next,
 .lost,
@@ -148,7 +241,6 @@ button {
 .next,
 .lost,
 .nextButton {
-    color: #FFFFFF;
     text-align: center;
     max-width: 116px;
 }
@@ -169,10 +261,6 @@ button {
     font-size: 12px;
 }
 
-.letter,
-.question {
-    font-size: 18px;
-}
 
 .letter,
 .button-answer,
@@ -186,34 +274,6 @@ button {
 .nextButton {
     background-color: #F9A826;
     border: solid 2px #F9A826;
-    color: #FFFFFF;
-}
-
-
-/* RESULT CARD */
-
-.question {
-    color: #2F527B;
-}
-
-.heading-result,
-.score {
-    font-weight: 700;
-}
-
-.heading-result {
-    font-size: 24px;
-    color: #1D355D;
-}
-
-.score-text {
-    font-size: 16px;
-    color: #1D355D;
-}
-
-.score {
-    font-size: 46px;
-    color: #60BF88;
 }
 
 .button-answer:hover,
@@ -228,7 +288,6 @@ button {
 .true,
 .true:hover,
 .false:hover {
-    color: #FFFFFF;
     display: flex;
     align-items: center;
 }
@@ -253,64 +312,28 @@ button {
     border: 2px solid rgba(96, 102, 208)
 }
 
-/* Footer */
-
-footer {
-    text-align: center;
-}
-
-footer a {
-    font-family: "myMontserrat", Arial, Helvetica, sans-serif;
-    text-decoration: none;
-    font-size: 14px;
-    color: #F2F2F2;
-    font-weight: 600;
+.next,
+.lost,
+.nextButton,
+.button-answer:hover,
+.false,
+.true,
+.true:hover,
+.false:hover {
+    color: #FFFFFF;
 }
 
 @media (min-width: 350px) {
-    picture,
-    .adventure {
-        display: block;
-    }
-
-    picture {
-        position: relative;
-        width: 100%;
-        max-width: 162px;
-    }
-    
-    .adventure {
-        width: 100%;
-        position: absolute;
-        max-width: 162px;
-        top: 45%;
-        right: 0;
-    }
-
-    .letter,
-    .question {
-        font-size: 24px;
-    }
-    .heading-result {
-        font-size: 48px;
-    }
     .next,
     .button-answer,
     .retry-button {
         font-size: 18px;
     }
-
-    .score-text {
-        font-size: 18px;
-    }
-    }
-
-
-
-@media (min-width: 420px) {
-    .adventure {
-        top: 12%;
+    .retry-button {
+        max-width: 209px;
+        height: 62px;
     }
 }
 
-/*# sourceMappingURL=/country-quiz.9ad09f98.css.map */
+
+/*# sourceMappingURL=/css.967bad95.css.map */

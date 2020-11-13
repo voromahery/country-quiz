@@ -28464,7 +28464,9 @@ function ScoreModal(props) {
     alt: "score"
   }), /*#__PURE__*/_react.default.createElement("h1", {
     className: "heading-result"
-  }, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", /*#__PURE__*/_react.default.createElement("span", {
+  }, "Results"), /*#__PURE__*/_react.default.createElement("p", {
+    className: "score-text"
+  }, "You got ", /*#__PURE__*/_react.default.createElement("span", {
     className: "score"
   }, props.counter), " correct ", scoreLetter), /*#__PURE__*/_react.default.createElement("button", {
     className: "retry-button",
@@ -28619,7 +28621,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50399" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60956" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -33,7 +33,7 @@ export default function ScoreModal(props) {
             <div className="card score-card">
                 <img src={scoreImage} alt="score" />
                 <h1 className="heading-result">Results</h1>
-                <p>You got <span className="score">{props.counter}</span> correct {scoreLetter}</p>
+                <p className="score-text">You got <span className="score">{props.counter}</span> correct {scoreLetter}</p>
                 <button className="retry-button" onClick={retryAgain}>Retry</button>
             </div>
         </>
