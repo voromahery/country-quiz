@@ -1,38 +1,3 @@
-# Country Quiz
-
-Challenge: Create a country quiz app using an API, and use React to handle the frontend. Don’t look at the existing solution. Fulfill user stories below:
-
-![image](./assets/quiz1.png)
-![image](./assets/quiz2.png)
-![image](./assets/quiz3.png)
-![image](./assets/quiz4.png)
-
--   User story: I can see at least 2 types of question: a city is the capital of.. or a flag belong to country..
--   User story: I can see select an answer
--   User story: I can see if my answer is correct or incorrect
--   User story: When I answer correctly, I can move on to the next question
--   User story: When I answer incorrectly, I can see my results and try again
--   User story: I can try again
-
-**Icon**: https://google.github.io/material-design-icons/
-
-**API**: https://restcountries.eu/. Use data from the API to create questions and answers.
-
-**Design** : https://www.figma.com/file/Gw0ZNBbYN8asqFlZWy3jG1
-
-**Live app** : https://country-quiz-app.netlify.app/
-
-As long as you fulfill all the user stories, you can give your personal touches by adding transition, using your own images, changing colors, or even creating your own layout,...
-
-Once you completed, submit your solutions by providing URLs for both GitHub repository and live app on Netlify and explain briefly what you have done.
-
-For the custom domain url you'll enter in netlify, please use the following naming convention : **country-quiz-_YOUR_FIRSTNAME_.netlify.app** (replace YOUR_FIRSTNAME by your firstname)
-
-Good luck everybody!
-
-Template for your readme :
-
-<!-- Please update value in the {}  -->
 
 <h1 align="center">Country quiz</h1>
 
@@ -65,9 +30,19 @@ Template for your readme :
 
 ![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
+-   Click this link to see my app [country-quiz](https://country-quiz-daniel.netlify.app/) :
+  
+1. I fetched all the countries from the [API](https://restcountries.eu/) and I created an object that stores all four random capital of cities, then I mapped them inside a button.
 
--   Click this link to see my demo [country-quiz](https://country-quiz-daniel.netlify.app/)
+1. I created an array of questions so and displayed them randomly by using `Math.floor()` and `Math.random()`.
+
+1. I grabbed all buttons and set conditions to see the correct answer and the wrong one by changing their background color if one of them is clicked.
+
+1. `Counter` is used in order to get the score everytime the user clicks the right answer.
+
+1. To display the score card, I used condition as below: if a user clicked the wrong answer the card appear with the score. The card disappears once the user clicks the retry button.
+------------------------------------------------------------------------------
+
 -   When I did this project, I faced different challenge especially on changing the background color of the button when it is true or not.
 -   If you want to make any modification to an element that we grabed by using `querySelectorAll`, don't forget to use `forEach()`.
 -   If you do a project, it is better to enlist a few plan before start doing it.
@@ -79,6 +54,7 @@ Introduce your projects by taking a screenshot or a gif. Try to tell visitors a 
 
 ## Features
 
+- [Country API](https://restcountries.eu/)
 - [Material design icon](https://google.github.io/material-design-icons/)
 
 ## How To Use
@@ -98,5 +74,5 @@ $ npm start
 
 ## Contact
 
--   Website [h-fabrice-daniel.com](https://h-fabrice-daniel.netlify.app/)
+-   Website [h-fabrice-daniel.com](https://daniel-fabrice-website.netlify.app/)
 -   GitHub [voromahery](https://github.com/voromahery/country-quiz)
