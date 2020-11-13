@@ -28287,6 +28287,10 @@ if ("development" === 'production') {
 }
 },{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"icons/adventure.svg":[function(require,module,exports) {
 module.exports = "/adventure.917964df.svg";
+},{}],"icons/wrong.svg":[function(require,module,exports) {
+module.exports = "/wrong.7f7ff515.svg";
+},{}],"icons/correct.svg":[function(require,module,exports) {
+module.exports = "/correct.bbe86b11.svg";
 },{}],"components/Question.js":[function(require,module,exports) {
 "use strict";
 
@@ -28299,11 +28303,17 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _adventure = _interopRequireDefault(require("../icons/adventure.svg"));
 
+var _wrong = _interopRequireDefault(require("../icons/wrong.svg"));
+
+var _correct = _interopRequireDefault(require("../icons/correct.svg"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+const addIcon = document.createElement("img");
 
 function Question(props) {
   const letter = ["A", "B", "C", "D"];
@@ -28314,22 +28324,32 @@ function Question(props) {
     const container = document.querySelector(".container");
     const buttons = Array.from(container.querySelectorAll(".button-answer"));
     const trueAnswer = e.target.value === props.correct;
+    addIcon.classList.add("response-icon");
 
     if (trueAnswer) {
       e.target.classList.add("true");
+      e.target.appendChild(addIcon);
+      addIcon.src = _correct.default;
       props.setIsDisable(true);
       setIsLose(false);
       setIsShowButton(true);
       props.setCounter(prevState => prevState + 1);
-    } else {
+    }
+
+    if (!trueAnswer) {
+      const wrongAnswer = document.createElement("img");
       e.target.classList.add("false");
+      wrongAnswer.src = _wrong.default;
+      e.target.appendChild(wrongAnswer);
+      wrongAnswer.classList.add("response-icon");
       props.setIsDisable(true);
       setIsLose(true);
       setIsShowButton(true);
-      console.log(trueAnswer);
     }
 
     const correctButton = buttons.find(button => button.value === props.correct);
+    addIcon.src = _correct.default;
+    correctButton.appendChild(addIcon);
     correctButton.classList.add("true");
   } // Next button
 
@@ -28338,6 +28358,10 @@ function Question(props) {
     const container = document.querySelector(".container");
     const buttons = Array.from(container.querySelectorAll(".button-answer"));
     buttons.forEach(button => button.classList.remove("true"));
+    const text = Array.from(document.querySelectorAll(".response-icon"));
+    text.forEach(name => name.remove());
+    console.log(text);
+    setIsShowButton(false);
     props.fetchData();
     props.setIsDisable(false);
   } // Sort the random answer by the length of the letter
@@ -28376,8 +28400,10 @@ function Question(props) {
     id: test.answer,
     onClick: handleClickAnswer
   }, /*#__PURE__*/_react.default.createElement("span", {
-    className: "letter"
-  }, letter[index]), " ", test.answer))), isLose === true ? /*#__PURE__*/_react.default.createElement("button", {
+    className: "letter",
+    value: test.answer,
+    id: test.answer
+  }, letter[index]), test.answer))), isLose === true ? /*#__PURE__*/_react.default.createElement("button", {
     className: "next",
     onClick: props.show
   }, "Next") : "", isShowButton === true && isLose === false ? /*#__PURE__*/_react.default.createElement("button", {
@@ -28385,7 +28411,7 @@ function Question(props) {
     onClick: handleClick
   }, "Next") : "")));
 }
-},{"react":"node_modules/react/index.js","../icons/adventure.svg":"icons/adventure.svg"}],"icons/win.svg":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../icons/adventure.svg":"icons/adventure.svg","../icons/wrong.svg":"icons/wrong.svg","../icons/correct.svg":"icons/correct.svg"}],"icons/win.svg":[function(require,module,exports) {
 module.exports = "/win.01a8852d.svg";
 },{}],"components/ScoreModal.js":[function(require,module,exports) {
 "use strict";
@@ -28414,7 +28440,8 @@ function ScoreModal(props) {
     props.setIsShowModal(false);
     props.setIsDisable(false);
     props.setCounter(0);
-  }
+  } // Set condition on the letter answer in order to get the right grammar
+
 
   let scoreLetter = "";
 
@@ -28592,7 +28619,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55481" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50399" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

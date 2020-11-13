@@ -14,6 +14,7 @@ export default function ScoreModal(props) {
         props.setCounter(0);
     }
 
+    // Set condition on the letter answer in order to get the right grammar
     let scoreLetter = "";
 
     if (props.counter === 0 || props.counter === 1) {

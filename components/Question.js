@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import adventure from "../icons/adventure.svg";
-
+import adventure from '../icons/adventure.svg';
+import wrongIcon from '../icons/wrong.svg';
+import correctIcon from '../icons/correct.svg';
+const addIcon = document.createElement("img");
 
 export default function Question(props) {
     const letter = ["A", "B", "C", "D"];
@@ -11,22 +13,32 @@ export default function Question(props) {
         const container = document.querySelector(".container");
         const buttons = Array.from(container.querySelectorAll(".button-answer"));
         const trueAnswer = e.target.value === props.correct;
-
+        addIcon.classList.add("response-icon");
         if (trueAnswer) {
             e.target.classList.add("true");
+            e.target.appendChild(addIcon);
+            addIcon.src = correctIcon;
             props.setIsDisable(true);
             setIsLose(false);
             setIsShowButton(true)
             props.setCounter(prevState => prevState + 1);
-        } else {
+
+        } 
+        if (!trueAnswer) {
+            const wrongAnswer = document.createElement("img");
             e.target.classList.add("false");
+            wrongAnswer.src=wrongIcon;
+            e.target.appendChild(wrongAnswer);
+            wrongAnswer.classList.add("response-icon");
             props.setIsDisable(true);
             setIsLose(true);
             setIsShowButton(true);
-            console.log(trueAnswer);
         }
-        const correctButton = buttons.find(button => button.value === props.correct)
-        correctButton.classList.add("true")
+
+        const correctButton = buttons.find(button => button.value === props.correct);
+        addIcon.src = correctIcon;
+        correctButton.appendChild(addIcon);
+        correctButton.classList.add("true");
     }
 
     // Next button
@@ -34,6 +46,10 @@ export default function Question(props) {
         const container = document.querySelector(".container");
         const buttons = Array.from(container.querySelectorAll(".button-answer"));
         buttons.forEach(button => button.classList.remove("true"));
+        const text = Array.from(document.querySelectorAll(".response-icon"));
+        text.forEach(name => name.remove());
+        console.log(text);
+        setIsShowButton(false);
         props.fetchData();
         props.setIsDisable(false);
     }
@@ -62,7 +78,8 @@ export default function Question(props) {
                                 id={test.answer}
                                 onClick={handleClickAnswer}
                             >
-                                <span className="letter">{letter[index]}</span> {test.answer}
+                                <span className="letter" value={test.answer} id={test.answer}>{letter[index]}</span>
+                                {test.answer}
                             </button>
                         </li>
                     )}

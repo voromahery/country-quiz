@@ -35,7 +35,7 @@
 body {
     font-family: 'myPoppins', Arial, Helvetica, sans-serif;
     margin: auto;
-    background-color: rgba(96, 102, 208, 0.7);
+    background-color: rgba(96, 102, 208, 1);
 }
 
 .header {
@@ -119,11 +119,8 @@ button {
 }
 
 .list-item span {
-    padding-left: 19px;
-    padding-right: 46px;
+    margin: 19px;
 }
-
-
 
 .next,
 .lost,
@@ -148,6 +145,8 @@ button {
     max-width: 400px;
     color: rgba(96, 102, 208, 0.8);
     border: 2px solid rgba(96, 102, 208, 0.7);
+    display: flex;
+    align-items: center;
 }
 
 .next,
@@ -200,21 +199,18 @@ button {
 .true:hover,
 .false:hover {
     color: #FFFFFF;
-    background-size: contain;
-    background-position: right;
-    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
 }
 
 .true,
 .true:hover {
     background-color: #60BF88;
-    background-image: url("/correct.bbe86b11.svg");
 } 
 
 .false,
 .false:hover {
     background-color: #EA8282;
-    background-image: url("/wrong.7f7ff515.svg");
 }
 
 .button-answer2 { 
@@ -223,6 +219,12 @@ button {
     max-width: 400px;
     color: rgba(96, 102, 208, 0.8);
     border: 2px solid rgba(96, 102, 208)
+}
+
+.response-icon,
+.incorrect-icon {
+    max-width: 20px;
+    margin-left: auto;
 }
 
 /* Footer */

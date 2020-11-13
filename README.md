@@ -34,7 +34,7 @@ Template for your readme :
 
 <!-- Please update value in the {}  -->
 
-<h1 align="center">{Your project name}</h1>
+<h1 align="center">Country quiz</h1>
 
 <div align="center">
   <h3>
@@ -67,24 +67,21 @@ Template for your readme :
 
 Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
 
--   Where can I see your demo?
--   What was your experience?
--   What have you learned/improved?
--   Your wisdom? :)
+-   Click this link to see my demo [country-quiz](https://country-quiz-daniel.netlify.app/)
+-   When I did this project, I faced different challenge especially on changing the background color of the button when it is true or not.
+-   If you want to make any modification to an element that we grabed by using `querySelectorAll`, don't forget to use `forEach()`.
+-   If you do a project, it is better to enlist a few plan before start doing it.
 
 ### Built With
 
-<!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
-
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 -   [React](https://reactjs.org/)
 
 ## Features
 
-<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
+- [Material design icon](https://google.github.io/material-design-icons/)
 
 ## How To Use
-
-<!-- Example: -->
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
@@ -99,12 +96,7 @@ $ npm install
 $ npm start
 ```
 
-## Acknowledgements
-
-<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example: -->
-
 ## Contact
 
--   Website [your-website.com](https://{your-web-site-link})
--   GitHub [@your-username](https://{github.com/your-usermame})
--   Twitter [@your-twitter](https://{twitter.com/your-username})
+-   Website [h-fabrice-daniel.com](https://h-fabrice-daniel.netlify.app/)
+-   GitHub [voromahery](https://github.com/voromahery/country-quiz)
