@@ -28473,7 +28473,27 @@ function ScoreModal(props) {
     onClick: retryAgain
   }, "Retry")));
 }
-},{"react":"node_modules/react/index.js","../icons/win.svg":"icons/win.svg"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../icons/win.svg":"icons/win.svg"}],"components/Footer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Footer() {
+  return /*#__PURE__*/_react.default.createElement("footer", null, /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "/"
+  }, "H. Daniel Fabrice @ DevChallenges.io")));
+}
+
+var _default = Footer;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28486,6 +28506,8 @@ var _react = _interopRequireWildcard(require("react"));
 var _Question = _interopRequireDefault(require("./components/Question"));
 
 var _ScoreModal = _interopRequireDefault(require("./components/ScoreModal"));
+
+var _Footer = _interopRequireDefault(require("./components/Footer"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28576,12 +28598,12 @@ function App() {
     setCounter: setCounter,
     fetchData: fetchData,
     correct: correct
-  }));
+  }), /*#__PURE__*/_react.default.createElement(_Footer.default, null));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./components/Question":"components/Question.js","./components/ScoreModal":"components/ScoreModal.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./components/Question":"components/Question.js","./components/ScoreModal":"components/ScoreModal.js","./components/Footer":"components/Footer.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

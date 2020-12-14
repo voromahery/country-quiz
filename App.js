@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Question from './components/Question';
 import ScoreModal from './components/ScoreModal';
+import Footer from './components/Footer';
 
 function App() {
     
@@ -96,6 +97,7 @@ function App() {
                     correct={correct}
                 />
             }
+            <Footer/>
         </div>
     )
 }

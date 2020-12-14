@@ -36,7 +36,7 @@
     color: #60BF88;
 }
 
-@media (min-width: 300px) {
+@media (min-width: 350px) {
     .card {
         border-radius: 12px;
         padding-left: 32px;

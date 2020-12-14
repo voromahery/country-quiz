@@ -23,7 +23,7 @@
     color: #1D355D;
 }
 
-@media (min-width: 300px) {
+@media (min-width: 350px) {
     .header-wrapper > .heading {
         font-size: 36px;
     }
