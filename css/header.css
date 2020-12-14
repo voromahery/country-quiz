@@ -9,6 +9,7 @@
 
 .header-wrapper > .heading {
     color: #F2F2F2;
+    font-size: 30px;
     text-transform: uppercase;
 }
 
@@ -22,7 +23,11 @@
     color: #1D355D;
 }
 
-@media (min-width: 350px) {
+@media (min-width: 300px) {
+    .header-wrapper > .heading {
+        font-size: 36px;
+    }
+
     .heading-result {
         font-size: 48px;
     }

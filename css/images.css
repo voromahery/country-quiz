@@ -15,7 +15,7 @@ picture {
     filter: drop-shadow(0px 4px 24px rgba(0, 0, 0, 0.1));
 }
 
-@media (min-width: 350px) {
+@media (min-width: 300px) {
     picture,
     .adventure {
         display: block;
