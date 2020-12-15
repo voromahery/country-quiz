@@ -240,16 +240,14 @@ button {
 }
 
 .retry-button {
-  max-width: 150px;
-  height: 45px;
+  max-width: calc(150px / 2);
+  min-height: calc(45px / 2);
   border: 2px solid #1d355d;
-  border-radius: 12px;
   background-color: transparent;
   color: #1d355d;
   font-weight: 600;
 }
 
-.next,
 .lost,
 .nextButton {
   margin-top: 1rem;
@@ -259,18 +257,24 @@ button {
 .next,
 .lost,
 .nextButton,
+.button-answer,
+.retry-button {
+  border-radius: calc(12px / 2);
+}
+
+.next,
+.lost,
+.nextButton,
 .button-answer {
   width: 100%;
   min-height: calc(56px / 2);
-  /* height: fit-content; */
-  border-radius: calc(12px / 2);
 }
 
 .next,
 .lost,
 .nextButton {
   text-align: center;
-  max-width: 116px;
+  max-width: calc(116px / 2);
 }
 
 .button-answer {
@@ -304,9 +308,8 @@ button {
 }
 
 .next {
-    align-self: flex-end;
+  align-self: flex-end;
 }
-
 
 .button-answer:hover,
 .false,
@@ -367,12 +370,25 @@ button {
   .nextButton,
   .button-answer {
     min-height: 56px;
+  }
+
+  .next,
+  .lost,
+  .nextButton,
+  .button-answer,
+  .retry-button {
     border-radius: 12px;
+  }
+
+  .next,
+  .lost,
+  .nextButton {
+    max-width: 116px;
   }
 
   .retry-button {
     max-width: 209px;
-    height: 62px;
+    min-height: 62px;
   }
 }
 
