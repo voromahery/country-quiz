@@ -47,7 +47,7 @@ body {
 #root {
     max-width: 464px;
     margin: auto;
-    padding: 1rem;
+    padding: 8px;
 }
 
 ul {
@@ -61,6 +61,11 @@ img {
     width: 100%;
 }
 
+@media (min-width: 350px) {
+    #root {
+        padding: 16px; 
+    }  
+}
 .header {
     position: relative;
 }
