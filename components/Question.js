@@ -48,7 +48,6 @@ export default function Question(props) {
         buttons.forEach(button => button.classList.remove("true"));
         const text = Array.from(document.querySelectorAll(".response-icon"));
         text.forEach(name => name.remove());
-        console.log(text);
         setIsShowButton(false);
         props.fetchData();
         props.setIsDisable(false);
