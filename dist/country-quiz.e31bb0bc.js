@@ -28471,7 +28471,7 @@ function ScoreModal(props) {
   }, props.counter), " correct ", scoreLetter), /*#__PURE__*/_react.default.createElement("button", {
     className: "retry-button",
     onClick: retryAgain
-  }, "Retry")));
+  }, "Try again")));
 }
 },{"react":"node_modules/react/index.js","../icons/win.svg":"icons/win.svg"}],"components/Footer.js":[function(require,module,exports) {
 "use strict";

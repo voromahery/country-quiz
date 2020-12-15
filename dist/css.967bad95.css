@@ -207,8 +207,8 @@ picture {
   }
 
   .score-card {
-    padding-left: calc(113px / 2);
-    padding-right: calc(113px / 2);
+    padding-left: calc(109px / 2);
+    padding-right: calc(109px / 2);
   }
 
   .score-text {
@@ -222,8 +222,8 @@ picture {
 
 @media (min-width: 600px) {
   .score-card {
-    padding-left: 113px;
-    padding-right: 113px;
+    padding-left: 109px;
+    padding-right: 109px;
   }
 }
 

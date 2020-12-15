@@ -34,7 +34,7 @@ export default function ScoreModal(props) {
                 <img src={scoreImage} alt="score" />
                 <h1 className="heading-result">Results</h1>
                 <p className="score-text">You got <span className="score">{props.counter}</span> correct {scoreLetter}</p>
-                <button className="retry-button" onClick={retryAgain}>Retry</button>
+                <button className="retry-button" onClick={retryAgain}>Try again</button>
             </div>
         </>
     )
