@@ -1,6 +1,7 @@
-.list-item {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(31px / 2);
 }
 
 .card {
@@ -37,6 +38,10 @@
 }
 
 @media (min-width: 350px) {
+  .list {
+    gap: 31px;
+  }
+
   .card {
     border-radius: 12px;
     padding-left: 32px;

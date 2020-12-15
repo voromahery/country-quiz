@@ -1,107 +1,112 @@
 /* BUTTONS */
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .retry-button {
-    max-width: 150px;
-    height: 45px;
-    border: 2px solid #1D355D;
-    border-radius: 12px;
-    background-color: transparent;
-    color: #1D355D;
-    font-weight: 600;
+  max-width: 150px;
+  height: 45px;
+  border: 2px solid #1d355d;
+  border-radius: 12px;
+  background-color: transparent;
+  color: #1d355d;
+  font-weight: 600;
 }
 
 .next,
 .lost,
 .nextButton {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .next,
 .lost,
 .nextButton,
 .button-answer {
-    width: 100%;
-    height: 56px;
-    border-radius: 12px;
+  width: 100%;
+  min-height: calc(56px / 2);
+  /* height: fit-content; */
+  border-radius: calc(12px / 2);
 }
 
 .next,
 .lost,
 .nextButton {
-    text-align: center;
-    max-width: 116px;
+  text-align: center;
+  max-width: 116px;
 }
 
 .button-answer {
-    background-color: #FFFFFF;
-    text-align: start;
-    color: rgba(96, 102, 208, 0.8);
-    border: 2px solid rgba(96, 102, 208, 0.7);
-    display: flex;
-    align-items: center;
-    min-width: 133px;
+  background-color: #ffffff;
+  text-align: start;
+  color: rgba(96, 102, 208, 0.8);
+  border: 2px solid rgba(96, 102, 208, 0.7);
+  display: flex;
+  align-items: center;
+  min-width: 133px;
 }
 
 .next,
 .button-answer,
 .retry-button {
-    font-size: 12px;
+  font-size: 12px;
 }
-
 
 .letter,
 .button-answer,
 .next {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .button-answer:hover,
 .next,
 .lost,
 .nextButton {
-    background-color: #F9A826;
-    border: solid 2px #F9A826;
+  background-color: #f9a826;
+  border: solid 2px #f9a826;
 }
+
+.next {
+    align-self: flex-end;
+}
+
 
 .button-answer:hover,
 .false,
 .true,
 .true:hover,
 .false:hover {
-    transition: all ease-in .2s;
+  transition: all ease-in 0.2s;
 }
 
 .false,
 .true,
 .true:hover,
 .false:hover {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .true,
 .true:hover {
-    background-color: #60BF88;
-    border: solid 2px #60BF88;
-} 
+  background-color: #60bf88;
+  border: solid 2px #60bf88;
+}
 
 .false,
 .false:hover {
-    background-color: #EA8282;
-    border: solid #EA8282 2px;
+  background-color: #ea8282;
+  border: solid #ea8282 2px;
 }
 
-.button-answer2 { 
-    background-color: #FFFFFF;
-    text-align: start;
-    max-width: 400px;
-    color: rgba(96, 102, 208, 0.8);
-    border: 2px solid rgba(96, 102, 208)
+.button-answer2 {
+  background-color: #ffffff;
+  text-align: start;
+  max-width: 400px;
+  color: rgba(96, 102, 208, 0.8);
+  border: 2px solid rgba(96, 102, 208);
 }
 
 .next,
@@ -112,17 +117,26 @@ button {
 .true,
 .true:hover,
 .false:hover {
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 @media (min-width: 350px) {
-    .next,
-    .button-answer,
-    .retry-button {
-        font-size: 18px;
-    }
-    .retry-button {
-        max-width: 209px;
-        height: 62px;
-    }
+  .next,
+  .button-answer,
+  .retry-button {
+    font-size: 18px;
+  }
+
+  .next,
+  .lost,
+  .nextButton,
+  .button-answer {
+    min-height: 56px;
+    border-radius: 12px;
+  }
+
+  .retry-button {
+    max-width: 209px;
+    height: 62px;
+  }
 }
