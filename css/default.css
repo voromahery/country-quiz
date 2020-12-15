@@ -14,6 +14,7 @@ body {
     max-width: 464px;
     margin: auto;
     padding: 8px;
+    height: 100vh;
 }
 
 ul {

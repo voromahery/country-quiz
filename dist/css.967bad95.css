@@ -48,6 +48,7 @@ body {
     max-width: 464px;
     margin: auto;
     padding: 8px;
+    height: 100vh;
 }
 
 ul {
@@ -167,7 +168,7 @@ picture {
   padding-left: calc(32px / 2);
   padding-right: calc(32px / 2);
   padding-top: calc(68px / 2);
-  padding-bottom: calc(32px / 2);
+  padding-bottom: calc(68px / 2);
 }
 
 .score-card {
@@ -206,7 +207,7 @@ picture {
     padding-left: 32px;
     padding-right: 32px;
     padding-top: 68px;
-    padding-bottom: 32px;
+    padding-bottom: 68px;
   }
 
   .letter {
