@@ -167,6 +167,8 @@ picture {
 
 .score-card {
   text-align: center;
+  padding-top: calc(49px / 2);
+  padding-bottom: calc(33px / 2);
 }
 
 .letter {
@@ -215,6 +217,8 @@ picture {
   .score-card {
     padding-left: calc(109px / 2);
     padding-right: calc(109px / 2);
+    padding-top: 49px;
+    padding-bottom: 33px;
   }
 
   .score-text {
