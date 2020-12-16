@@ -34,7 +34,7 @@
 }
 body {
     font-family: 'myPoppins', Arial, Helvetica, sans-serif;
-    display: flex;
+    /* display: flex; */
     margin: auto;
     background-color: rgba(96, 102, 208, 1);
     background-image: url("/background.0063873b.png");
