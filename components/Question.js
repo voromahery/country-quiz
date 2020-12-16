@@ -12,11 +12,11 @@ export default function Question(props) {
     function handleClickAnswer(e) {
         const container = document.querySelector(".container");
         const buttons = Array.from(container.querySelectorAll(".button-answer"));
-        const trueAnswer = e.target.value === props.correct;
+        const trueAnswer = e.currentTarget.value === props.correct;
         addIcon.classList.add("response-icon");
         if (trueAnswer) {
-            e.target.classList.add("true");
-            e.target.appendChild(addIcon);
+            e.currentTarget.classList.add("true");
+            e.currentTarget.appendChild(addIcon);
             addIcon.src = correctIcon;
             props.setIsDisable(true);
             setIsLose(false);
@@ -26,9 +26,9 @@ export default function Question(props) {
         }
         if (!trueAnswer) {
             const wrongAnswer = document.createElement("img");
-            e.target.classList.add("false");
+            e.currentTarget.classList.add("false");
             wrongAnswer.src = wrongIcon;
-            e.target.appendChild(wrongAnswer);
+            e.currentTarget.appendChild(wrongAnswer);
             wrongAnswer.classList.add("response-icon");
             props.setIsDisable(true);
             setIsLose(true);
