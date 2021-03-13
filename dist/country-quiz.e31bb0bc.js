@@ -6807,7 +6807,7 @@ if ("development" !== "production") {
       }
 
       var eventName = 'on' + eventNameSuffix;
-      var isSupported = (eventName in document);
+      var isSupported = eventName in document;
 
       if (!isSupported) {
         var element = document.createElement('div');
@@ -28367,45 +28367,45 @@ function Question(props) {
 
 
   const sortingAnswer = props.testAnswer.sort((a, b) => a.answer.length - b.answer.length);
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return _react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement("header", {
+  }, _react.default.createElement("header", {
     className: "header"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, _react.default.createElement("div", {
     className: "header-wrapper"
-  }, /*#__PURE__*/_react.default.createElement("h1", {
+  }, _react.default.createElement("h1", {
     className: "heading"
-  }, "Country quiz"), /*#__PURE__*/_react.default.createElement("picture", null, /*#__PURE__*/_react.default.createElement("img", {
+  }, "Country quiz"), _react.default.createElement("picture", null, _react.default.createElement("img", {
     src: _adventure.default,
     className: "adventure",
     alt: "adventure"
-  })))), /*#__PURE__*/_react.default.createElement("article", {
+  })))), _react.default.createElement("article", {
     className: "card"
-  }, props.questionChoice === "Which country does this flag belong to?" ? /*#__PURE__*/_react.default.createElement("img", {
+  }, props.questionChoice === "Which country does this flag belong to?" ? _react.default.createElement("img", {
     src: props.randomName.flag,
     alt: "flag",
     className: "flag"
-  }) : "", /*#__PURE__*/_react.default.createElement("h3", {
+  }) : "", _react.default.createElement("h3", {
     className: "question"
-  }, props.questionChoice), /*#__PURE__*/_react.default.createElement("ul", {
+  }, props.questionChoice), _react.default.createElement("ul", {
     className: "list"
-  }, sortingAnswer.map((test, index) => /*#__PURE__*/_react.default.createElement("li", {
+  }, sortingAnswer.map((test, index) => _react.default.createElement("li", {
     className: "list-item",
     key: test.id
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, _react.default.createElement("button", {
     disabled: props.isDisable ? "disabled" : "",
     className: "button-answer",
     value: test.answer,
     id: test.answer,
     onClick: handleClickAnswer
-  }, /*#__PURE__*/_react.default.createElement("span", {
+  }, _react.default.createElement("span", {
     className: "letter",
     value: test.answer,
     id: test.answer
-  }, letter[index]), test.answer))), isLose === true ? /*#__PURE__*/_react.default.createElement("button", {
+  }, letter[index]), test.answer))), isLose === true ? _react.default.createElement("button", {
     className: "next",
     onClick: props.show
-  }, "Next") : "", isShowButton === true && isLose === false ? /*#__PURE__*/_react.default.createElement("button", {
+  }, "Next") : "", isShowButton === true && isLose === false ? _react.default.createElement("button", {
     className: "next",
     onClick: handleClick
   }, "Next") : "")));
@@ -28450,24 +28450,24 @@ function ScoreModal(props) {
     scoreLetter = "answers";
   }
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("header", {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("header", {
     className: "header"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, _react.default.createElement("div", {
     className: "header-wrapper"
-  }, /*#__PURE__*/_react.default.createElement("h1", {
+  }, _react.default.createElement("h1", {
     className: "heading"
-  }, "Country quiz"))), /*#__PURE__*/_react.default.createElement("div", {
+  }, "Country quiz"))), _react.default.createElement("div", {
     className: "card score-card"
-  }, /*#__PURE__*/_react.default.createElement("img", {
+  }, _react.default.createElement("img", {
     src: _win.default,
     alt: "score"
-  }), /*#__PURE__*/_react.default.createElement("h1", {
+  }), _react.default.createElement("h1", {
     className: "heading-result"
-  }, "Results"), /*#__PURE__*/_react.default.createElement("p", {
+  }, "Results"), _react.default.createElement("p", {
     className: "score-text"
-  }, "You got ", /*#__PURE__*/_react.default.createElement("span", {
+  }, "You got ", _react.default.createElement("span", {
     className: "score"
-  }, props.counter), " correct ", scoreLetter), /*#__PURE__*/_react.default.createElement("button", {
+  }, props.counter), " correct ", scoreLetter), _react.default.createElement("button", {
     className: "retry-button",
     onClick: retryAgain
   }, "Try again")));
@@ -28485,7 +28485,7 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Footer() {
-  return /*#__PURE__*/_react.default.createElement("footer", null, /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("a", {
+  return _react.default.createElement("footer", null, _react.default.createElement("p", null, _react.default.createElement("a", {
     href: "/"
   }, "H. Daniel Fabrice @ DevChallenges.io")));
 }
@@ -28578,16 +28578,16 @@ function App() {
     questionChoice = "Which country does this flag belong to?";
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return _react.default.createElement("div", {
     className: "container"
-  }, isShowModal ? /*#__PURE__*/_react.default.createElement(_ScoreModal.default, {
+  }, isShowModal ? _react.default.createElement(_ScoreModal.default, {
     counter: counter,
     dataCountry: dataCountry,
     fetchData: fetchData,
     setCounter: setCounter,
     setIsShowModal: setIsShowModal,
     setIsDisable: setIsDisable
-  }) : /*#__PURE__*/_react.default.createElement(_Question.default, {
+  }) : _react.default.createElement(_Question.default, {
     questionChoice: questionChoice,
     randomName: randomName,
     testAnswer: testAnswer,
@@ -28597,7 +28597,7 @@ function App() {
     setCounter: setCounter,
     fetchData: fetchData,
     correct: correct
-  }), /*#__PURE__*/_react.default.createElement(_Footer.default, null));
+  }), _react.default.createElement(_Footer.default, null));
 }
 
 var _default = App;
@@ -28613,7 +28613,7 @@ var _App = _interopRequireDefault(require("./App"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById('root'));
+_reactDom.default.render(_react.default.createElement(_App.default, null), document.getElementById('root'));
 },{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./App":"App.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -28642,7 +28642,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51688" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53934" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -28673,9 +28673,8 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
         assetsToAccept.forEach(function (v) {
           hmrAcceptRun(v[0], v[1]);
         });
-      } else if (location.reload) {
-        // `location` global exists in a web worker context but lacks `.reload()` function.
-        location.reload();
+      } else {
+        window.location.reload();
       }
     }
 
