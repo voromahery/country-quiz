@@ -251,7 +251,6 @@ button {
 
 .retry-button {
   max-width: calc(150px / 2);
-  min-height: calc(45px / 2);
   border: 2px solid #1d355d;
   background-color: transparent;
   color: #1d355d;
@@ -272,7 +271,6 @@ button {
   border-radius: calc(12px / 2);
 }
 
-.next,
 .lost,
 .nextButton,
 .button-answer {
@@ -312,7 +310,8 @@ button {
 .button-answer:hover,
 .next,
 .lost,
-.nextButton {
+.nextButton,
+.retry-button:hover {
   background-color: #f9a826;
   border: solid 2px #f9a826;
 }
@@ -325,7 +324,9 @@ button {
 .false,
 .true,
 .true:hover,
-.false:hover {
+.false:hover,
+.retry-button,
+.retry-button:hover {
   transition: all ease-in 0.2s;
 }
 
@@ -364,8 +365,14 @@ button {
 .false,
 .true,
 .true:hover,
-.false:hover {
+.false:hover,
+.retry-button:hover {
   color: #ffffff;
+}
+
+.retry-button,
+.next {
+  min-height: 45px;
 }
 
 @media (min-width: 350px) {
