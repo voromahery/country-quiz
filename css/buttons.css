@@ -145,7 +145,7 @@ button:disabled {
   .lost,
   .nextButton,
   .button-answer {
-    min-height: 56px;
+    height: 56px;
   }
 
   .next,

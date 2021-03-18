@@ -185,6 +185,7 @@ picture {
 .question {
   color: #2f527b;
   font-size: 16px;
+  margin-top: 0;
 }
 
 .score-text {
@@ -390,7 +391,7 @@ button:disabled {
   .lost,
   .nextButton,
   .button-answer {
-    min-height: 56px;
+    height: 56px;
   }
 
   .next,
