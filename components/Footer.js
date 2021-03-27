@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer>
       <p>
-        <a href="/">H. Daniel Fabrice @ DevChallenges.io</a>
+        <a href="https://github.com/voromahery">H. Daniel Fabrice @ DevChallenges.io</a>
       </p>
     </footer>
   )

@@ -1,5 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { GlobalContext } from "./GlobalContext";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <GlobalContext>
+    <App />
+  </GlobalContext>,
+  document.getElementById("root")
+);

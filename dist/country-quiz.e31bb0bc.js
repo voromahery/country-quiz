@@ -28285,236 +28285,25 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"icons/adventure.svg":[function(require,module,exports) {
-module.exports = "/adventure.917964df.svg";
-},{}],"icons/wrong.svg":[function(require,module,exports) {
-module.exports = "/wrong.7f7ff515.svg";
-},{}],"icons/correct.svg":[function(require,module,exports) {
-module.exports = "/correct.bbe86b11.svg";
-},{}],"components/Question.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"GlobalContext.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = Question;
+exports.GlobalContext = GlobalContext;
+exports.Context = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
-
-var _adventure = _interopRequireDefault(require("../icons/adventure.svg"));
-
-var _wrong = _interopRequireDefault(require("../icons/wrong.svg"));
-
-var _correct = _interopRequireDefault(require("../icons/correct.svg"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-const addIcon = document.createElement("img");
+const Context = (0, _react.createContext)(null);
+exports.Context = Context;
 
-function Question(props) {
-  const letter = ["A", "B", "C", "D"];
-  const [isShowButton, setIsShowButton] = (0, _react.useState)(false);
-  const [isLose, setIsLose] = (0, _react.useState)(false); // Answer button
-
-  function handleClickAnswer(e) {
-    const container = document.querySelector(".container");
-    const buttons = Array.from(container.querySelectorAll(".button-answer"));
-    const trueAnswer = e.currentTarget.value === props.correct;
-    addIcon.classList.add("response-icon");
-
-    if (trueAnswer) {
-      e.currentTarget.classList.add("true");
-      e.currentTarget.appendChild(addIcon);
-      addIcon.src = _correct.default;
-      props.setIsDisable(true);
-      setIsLose(false);
-      setIsShowButton(true);
-      props.setCounter(prevState => prevState + 1);
-    }
-
-    if (!trueAnswer) {
-      const wrongAnswer = document.createElement("img");
-      e.currentTarget.classList.add("false");
-      wrongAnswer.src = _wrong.default;
-      e.currentTarget.appendChild(wrongAnswer);
-      wrongAnswer.classList.add("response-icon");
-      props.setIsDisable(true);
-      setIsLose(true);
-      setIsShowButton(true);
-    }
-
-    const correctButton = buttons.find(button => button.value === props.correct);
-    addIcon.src = _correct.default;
-    correctButton.appendChild(addIcon);
-    correctButton.classList.add("true");
-  } // Next button
-
-
-  function handleClick() {
-    const container = document.querySelector(".container");
-    const buttons = Array.from(container.querySelectorAll(".button-answer"));
-    buttons.forEach(button => button.classList.remove("true"));
-    const text = Array.from(document.querySelectorAll(".response-icon"));
-    text.forEach(name => name.remove());
-    setIsShowButton(false);
-    props.fetchData();
-    props.setIsDisable(false);
-  } // Sort the random answer by the length of the letter
-
-
-  const sortingAnswer = props.testAnswer.sort((a, b) => a.answer.length - b.answer.length);
-  return _react.default.createElement("div", {
-    className: "container"
-  }, _react.default.createElement("header", {
-    className: "header"
-  }, _react.default.createElement("div", {
-    className: "header-wrapper"
-  }, _react.default.createElement("h1", {
-    className: "heading"
-  }, "Country quiz"), _react.default.createElement("picture", null, _react.default.createElement("img", {
-    src: _adventure.default,
-    className: "adventure",
-    alt: "adventure"
-  })))), _react.default.createElement("article", {
-    className: "card"
-  }, props.questionChoice === "Which country does this flag belong to?" ? _react.default.createElement("img", {
-    src: props.randomName.flag,
-    alt: "flag",
-    className: "flag"
-  }) : "", _react.default.createElement("h3", {
-    className: "question"
-  }, props.questionChoice), _react.default.createElement("ul", {
-    className: "list"
-  }, sortingAnswer.map((test, index) => _react.default.createElement("li", {
-    className: "list-item",
-    key: test.id
-  }, _react.default.createElement("button", {
-    disabled: props.isDisable ? "disabled" : "",
-    className: "button-answer",
-    value: test.answer,
-    id: test.answer,
-    onClick: handleClickAnswer
-  }, _react.default.createElement("span", {
-    className: "letter",
-    value: test.answer,
-    id: test.answer
-  }, letter[index]), test.answer))), isLose === true ? _react.default.createElement("button", {
-    className: "next",
-    onClick: props.show
-  }, "Next") : "", isShowButton === true && isLose === false ? _react.default.createElement("button", {
-    className: "next",
-    onClick: handleClick
-  }, "Next") : "")));
-}
-},{"react":"node_modules/react/index.js","../icons/adventure.svg":"icons/adventure.svg","../icons/wrong.svg":"icons/wrong.svg","../icons/correct.svg":"icons/correct.svg"}],"icons/win.svg":[function(require,module,exports) {
-module.exports = "/win.01a8852d.svg";
-},{}],"components/ScoreModal.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = ScoreModal;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _win = _interopRequireDefault(require("../icons/win.svg"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function ScoreModal(props) {
-  const [isRetryGame, setIsRetryGame] = (0, _react.useState)(false); // For retry button, everything will be reseted.
-
-  function retryAgain() {
-    props.fetchData();
-    setIsRetryGame(false);
-    props.setIsShowModal(false);
-    props.setIsDisable(false);
-    props.setCounter(0);
-  } // Set condition on the letter answer in order to get the right grammar
-
-
-  let scoreLetter = "";
-
-  if (props.counter === 0 || props.counter === 1) {
-    scoreLetter = "answer";
-  } else {
-    scoreLetter = "answers";
-  }
-
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("header", {
-    className: "header"
-  }, _react.default.createElement("div", {
-    className: "header-wrapper"
-  }, _react.default.createElement("h1", {
-    className: "heading"
-  }, "Country quiz"))), _react.default.createElement("div", {
-    className: "card score-card"
-  }, _react.default.createElement("img", {
-    src: _win.default,
-    alt: "score"
-  }), _react.default.createElement("h1", {
-    className: "heading-result"
-  }, "Results"), _react.default.createElement("p", {
-    className: "score-text"
-  }, "You got ", _react.default.createElement("span", {
-    className: "score"
-  }, props.counter), " correct ", scoreLetter), _react.default.createElement("button", {
-    className: "retry-button",
-    onClick: retryAgain
-  }, "Try again")));
-}
-},{"react":"node_modules/react/index.js","../icons/win.svg":"icons/win.svg"}],"components/Footer.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Footer() {
-  return _react.default.createElement("footer", null, _react.default.createElement("p", null, _react.default.createElement("a", {
-    href: "/"
-  }, "H. Daniel Fabrice @ DevChallenges.io")));
-}
-
-var _default = Footer;
-exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _Question = _interopRequireDefault(require("./components/Question"));
-
-var _ScoreModal = _interopRequireDefault(require("./components/ScoreModal"));
-
-var _Footer = _interopRequireDefault(require("./components/Footer"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function App() {
+function GlobalContext(props) {
   // Create all necessaries variable
   const [dataCountry, setDataCountry] = (0, _react.useState)([]);
   const [randomName, setRandomName] = (0, _react.useState)([]);
@@ -28529,6 +28318,7 @@ function App() {
   const [isDisable, setIsDisable] = (0, _react.useState)(false);
   const [correct, setCorrect] = (0, _react.useState)("");
   const [isShowModal, setIsShowModal] = (0, _react.useState)(false);
+  const [isRetryGame, setIsRetryGame] = (0, _react.useState)(false);
 
   async function fetchData() {
     // Fetch the whole country
@@ -28578,31 +28368,298 @@ function App() {
     questionChoice = "Which country does this flag belong to?";
   }
 
+  return _react.default.createElement(Context.Provider, {
+    value: {
+      dataCountry,
+      setDataCountry,
+      randomName,
+      setRandomName,
+      question,
+      randomQuestion,
+      setRandomQuestion,
+      testAnswer,
+      setTestAnswer,
+      counter,
+      setCounter,
+      isDisable,
+      setIsDisable,
+      correct,
+      setCorrect,
+      isShowModal,
+      setIsShowModal,
+      show,
+      questionChoice,
+      fetchData,
+      isRetryGame,
+      setIsRetryGame
+    }
+  }, props.children);
+}
+},{"react":"node_modules/react/index.js"}],"icons/adventure.svg":[function(require,module,exports) {
+module.exports = "/adventure.917964df.svg";
+},{}],"icons/wrong.svg":[function(require,module,exports) {
+module.exports = "/wrong.7f7ff515.svg";
+},{}],"icons/correct.svg":[function(require,module,exports) {
+module.exports = "/correct.bbe86b11.svg";
+},{}],"components/Question.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Question;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _GlobalContext = require("../GlobalContext");
+
+var _adventure = _interopRequireDefault(require("../icons/adventure.svg"));
+
+var _wrong = _interopRequireDefault(require("../icons/wrong.svg"));
+
+var _correct = _interopRequireDefault(require("../icons/correct.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+const addIcon = document.createElement("img");
+
+function Question() {
+  const {
+    fetchData,
+    isDisable,
+    setIsDisable,
+    setCounter,
+    correct,
+    testAnswer,
+    questionChoice,
+    randomName,
+    show
+  } = (0, _react.useContext)(_GlobalContext.Context);
+  const letter = ["A", "B", "C", "D"];
+  const [isShowButton, setIsShowButton] = (0, _react.useState)(false);
+  const [isLose, setIsLose] = (0, _react.useState)(false); // Answer button
+
+  function handleClickAnswer(e) {
+    const container = document.querySelector(".container");
+    const buttons = Array.from(container.querySelectorAll(".button-answer"));
+    const trueAnswer = e.currentTarget.value === correct;
+    addIcon.classList.add("response-icon");
+
+    if (trueAnswer) {
+      e.currentTarget.classList.add("true");
+      e.currentTarget.appendChild(addIcon);
+      addIcon.src = _correct.default;
+      setIsDisable(true);
+      setIsLose(false);
+      setIsShowButton(true);
+      setCounter(prevState => prevState + 1);
+    }
+
+    if (!trueAnswer) {
+      const wrongAnswer = document.createElement("img");
+      e.currentTarget.classList.add("false");
+      wrongAnswer.src = _wrong.default;
+      e.currentTarget.appendChild(wrongAnswer);
+      wrongAnswer.classList.add("response-icon");
+      setIsDisable(true);
+      setIsLose(true);
+      setIsShowButton(true);
+    }
+
+    const correctButton = buttons.find(button => button.value === correct);
+    addIcon.src = _correct.default;
+    correctButton.appendChild(addIcon);
+    correctButton.classList.add("true");
+  } // Next button
+
+
+  function handleClick() {
+    const container = document.querySelector(".container");
+    const buttons = Array.from(container.querySelectorAll(".button-answer"));
+    buttons.forEach(button => button.classList.remove("true"));
+    const text = Array.from(document.querySelectorAll(".response-icon"));
+    text.forEach(name => name.remove());
+    setIsShowButton(false);
+    fetchData();
+    setIsDisable(false);
+  } // Sort the random answer by the length of the letter
+
+
+  const sortingAnswer = testAnswer.sort((a, b) => a.answer.length - b.answer.length);
   return _react.default.createElement("div", {
     className: "container"
-  }, isShowModal ? _react.default.createElement(_ScoreModal.default, {
-    counter: counter,
-    dataCountry: dataCountry,
-    fetchData: fetchData,
-    setCounter: setCounter,
-    setIsShowModal: setIsShowModal,
-    setIsDisable: setIsDisable
-  }) : _react.default.createElement(_Question.default, {
-    questionChoice: questionChoice,
-    randomName: randomName,
-    testAnswer: testAnswer,
-    isDisable: isDisable,
-    setIsDisable: setIsDisable,
-    show: show,
-    setCounter: setCounter,
-    fetchData: fetchData,
-    correct: correct
-  }), _react.default.createElement(_Footer.default, null));
+  }, _react.default.createElement("header", {
+    className: "header"
+  }, _react.default.createElement("div", {
+    className: "header-wrapper"
+  }, _react.default.createElement("h1", {
+    className: "heading"
+  }, "Country quiz"), _react.default.createElement("picture", null, _react.default.createElement("img", {
+    src: _adventure.default,
+    className: "adventure",
+    alt: "adventure"
+  })))), _react.default.createElement("article", {
+    className: "card"
+  }, questionChoice === "Which country does this flag belong to?" ? _react.default.createElement("img", {
+    src: randomName.flag,
+    alt: "flag",
+    className: "flag"
+  }) : "", _react.default.createElement("h3", {
+    className: "question"
+  }, questionChoice), _react.default.createElement("ul", {
+    className: "list"
+  }, sortingAnswer.map((test, index) => _react.default.createElement("li", {
+    className: "list-item",
+    key: test.id
+  }, _react.default.createElement("button", {
+    disabled: isDisable ? "disabled" : "",
+    className: "button-answer",
+    value: test.answer,
+    id: test.answer,
+    onClick: handleClickAnswer
+  }, _react.default.createElement("span", {
+    className: "letter",
+    value: test.answer,
+    id: test.answer
+  }, letter[index]), test.answer))), isLose === true ? _react.default.createElement("button", {
+    className: "next",
+    onClick: show
+  }, "Next") : "", isShowButton === true && isLose === false ? _react.default.createElement("button", {
+    className: "next",
+    onClick: handleClick
+  }, "Next") : "")));
+}
+},{"react":"node_modules/react/index.js","../GlobalContext":"GlobalContext.js","../icons/adventure.svg":"icons/adventure.svg","../icons/wrong.svg":"icons/wrong.svg","../icons/correct.svg":"icons/correct.svg"}],"icons/win.svg":[function(require,module,exports) {
+module.exports = "/win.01a8852d.svg";
+},{}],"components/ScoreModal.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = ScoreModal;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _GlobalContext = require("../GlobalContext");
+
+var _win = _interopRequireDefault(require("../icons/win.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function ScoreModal() {
+  const {
+    fetchData,
+    setIsDisable,
+    setIsShowModal,
+    setCounter,
+    counter,
+    setIsRetryGame
+  } = (0, _react.useContext)(_GlobalContext.Context); // For retry button, everything will be reseted.
+
+  function retryAgain() {
+    fetchData();
+    setIsRetryGame(false);
+    setIsShowModal(false);
+    setIsDisable(false);
+    setCounter(0);
+  } // Set condition on the letter answer in order to get the right grammar
+
+
+  let scoreLetter = "";
+
+  if (counter === 0 || counter === 1) {
+    scoreLetter = "answer";
+  } else {
+    scoreLetter = "answers";
+  }
+
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("header", {
+    className: "header"
+  }, _react.default.createElement("div", {
+    className: "header-wrapper"
+  }, _react.default.createElement("h1", {
+    className: "heading"
+  }, "Country quiz"))), _react.default.createElement("div", {
+    className: "card score-card"
+  }, _react.default.createElement("img", {
+    src: _win.default,
+    alt: "score"
+  }), _react.default.createElement("h1", {
+    className: "heading-result"
+  }, "Results"), _react.default.createElement("p", {
+    className: "score-text"
+  }, "You got ", _react.default.createElement("span", {
+    className: "score"
+  }, counter), " correct", scoreLetter), _react.default.createElement("button", {
+    className: "retry-button",
+    onClick: retryAgain
+  }, "Try again")));
+}
+},{"react":"node_modules/react/index.js","../GlobalContext":"GlobalContext.js","../icons/win.svg":"icons/win.svg"}],"components/Footer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Footer() {
+  return _react.default.createElement("footer", null, _react.default.createElement("p", null, _react.default.createElement("a", {
+    href: "https://github.com/voromahery"
+  }, "H. Daniel Fabrice @ DevChallenges.io")));
+}
+
+var _default = Footer;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Question = _interopRequireDefault(require("./components/Question"));
+
+var _ScoreModal = _interopRequireDefault(require("./components/ScoreModal"));
+
+var _Footer = _interopRequireDefault(require("./components/Footer"));
+
+var _GlobalContext = require("./GlobalContext");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function App() {
+  const {
+    isShowModal
+  } = (0, _react.useContext)(_GlobalContext.Context);
+  return _react.default.createElement("div", {
+    className: "container"
+  }, isShowModal ? _react.default.createElement(_ScoreModal.default, null) : _react.default.createElement(_Question.default, null), _react.default.createElement(_Footer.default, null));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./components/Question":"components/Question.js","./components/ScoreModal":"components/ScoreModal.js","./components/Footer":"components/Footer.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./components/Question":"components/Question.js","./components/ScoreModal":"components/ScoreModal.js","./components/Footer":"components/Footer.js","./GlobalContext":"GlobalContext.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28611,10 +28668,12 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _App = _interopRequireDefault(require("./App"));
 
+var _GlobalContext = require("./GlobalContext");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom.default.render(_react.default.createElement(_App.default, null), document.getElementById('root'));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./App":"App.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_reactDom.default.render(_react.default.createElement(_GlobalContext.GlobalContext, null, _react.default.createElement(_App.default, null)), document.getElementById("root"));
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./App":"App.js","./GlobalContext":"GlobalContext.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -28642,7 +28701,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54691" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51790" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
