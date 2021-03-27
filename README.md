@@ -30,6 +30,10 @@
 
 ![home](./images/home.webp);
 
+![clicked](./images/clicked.webp);
+
+![score](./images/score.webp);
+
 -   Click this link to see my app [country-quiz](https://country-quiz-daniel.netlify.app/) :
   
 1. I fetched all the countries from the [API](https://restcountries.eu/) and I created an object that stores all four random capital of cities, then I mapped them inside a button.

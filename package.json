@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "test": "jest --watchAll"
   },
   "author": "",
   "license": "ISC",
@@ -12,8 +13,23 @@
     "last 1 chrome versions"
   ],
   "dependencies": {
+    "jest": "^26.6.3",
+    "jest-dom": "^4.0.0",
+    "jest-fetch-mock": "^3.0.3",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/preset-env": "^7.12.17",
+    "@babel/preset-react": "^7.12.13",
+    "@testing-library/dom": "^7.29.6",
+    "babel-jest": "^26.6.3",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.7.2",
+    "jest": "^26.6.3",
+    "sass": "^1.32.8"
   }
 }
