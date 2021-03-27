@@ -4,7 +4,7 @@ import ScoreModal from "./components/ScoreModal";
 import Footer from "./components/Footer";
 import { Context } from "./GlobalContext";
 
-function App() {
+export default function App() {
   const { isShowModal } = useContext(Context);
 
   return (
@@ -15,4 +15,3 @@ function App() {
   );
 }
 
-export default App;
