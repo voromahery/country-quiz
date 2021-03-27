@@ -3,7 +3,7 @@ body {
   display: flex;
   margin: auto;
   background-color: rgba(96, 102, 208, 1);
-  background-image: url("../images/background.png");
+  background-image: url("../images/background.webp");
   background-size: cover;
   background-repeat: no-repeat;
   align-items: center;
@@ -16,7 +16,6 @@ body {
   max-width: 464px;
   margin: auto;
   padding: 8px;
-  /* height: fit-content; */
 }
 
 ul {

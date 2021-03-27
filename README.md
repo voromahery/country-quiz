@@ -3,7 +3,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://country-quiz-daniel.netlify.app/">
       Demo
     </a>
     <span> | </span>
@@ -28,7 +28,7 @@
 
 ## Overview
 
-![home](./images/home.png);
+![home](./images/home.webp);
 
 -   Click this link to see my app [country-quiz](https://country-quiz-daniel.netlify.app/) :
   

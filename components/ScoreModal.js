@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Context } from "../GlobalContext";
 import scoreImage from "../icons/win.svg";
 
