@@ -39,9 +39,12 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: 32px;
 }
 
-body,
 #root {
   margin: auto;
 }
@@ -430,6 +433,7 @@ button:disabled {
 
 
 footer {
+    /* display: none; */
     text-align: center;
 }
 
