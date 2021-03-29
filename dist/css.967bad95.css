@@ -42,7 +42,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
-  margin-bottom: 32px;
+  margin-bottom: 100px;
 }
 
 #root {
@@ -448,6 +448,10 @@ footer a {
     font-size: 14px;
     color: #F2F2F2;
     font-weight: 600;
+}
+
+footer b {
+    text-decoration: underline;
 }
 
 /*# sourceMappingURL=/css.967bad95.css.map */

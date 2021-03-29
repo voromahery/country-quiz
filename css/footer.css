@@ -17,3 +17,7 @@ footer a {
     color: #F2F2F2;
     font-weight: 600;
 }
+
+footer b {
+    text-decoration: underline;
+}
