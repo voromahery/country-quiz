@@ -80,6 +80,10 @@
 }
 
 @media (min-width: 600px) {
+  .card {
+    border-radius: 24px;
+  }
+  
   .score-card {
     padding-left: 109px;
     padding-right: 109px;

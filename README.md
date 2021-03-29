@@ -21,7 +21,7 @@
 - [Features](#features)
 - [How to use](#how-to-use)
 - [Contact](#contact)
-- [Description](#description)
+- [Acknowledgements](#acknowledgements)
 
 <!-- OVERVIEW -->
 
@@ -35,7 +35,7 @@
 
 - Click this link to see my app [country-quiz](https://country-quiz-daniel.netlify.app/) :
 
-## Description
+## [Acknowledgements](#acknowledgements)
 A game that I created in 3 days in order to practice my React skill.
 
 ### Built With

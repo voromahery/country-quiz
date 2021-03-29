@@ -29919,9 +29919,9 @@ var _Question = _interopRequireDefault(require("./components/Question"));
 
 var _ScoreModal = _interopRequireDefault(require("./components/ScoreModal"));
 
-var _Footer = _interopRequireDefault(require("./components/Footer"));
-
 var _GlobalContext = require("./GlobalContext");
+
+var _Footer = _interopRequireDefault(require("./components/Footer"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29935,9 +29935,9 @@ function App() {
   } = (0, _react.useContext)(_GlobalContext.Context);
   return _react.default.createElement("div", {
     className: "container"
-  }, isShowModal ? _react.default.createElement(_ScoreModal.default, null) : _react.default.createElement(_Question.default, null), _react.default.createElement(_Footer.default, null));
+  }, isShowModal ? _react.default.createElement(_ScoreModal.default, null) : _react.default.createElement(_Question.default, null));
 }
-},{"react":"node_modules/react/index.js","./components/Question":"components/Question.js","./components/ScoreModal":"components/ScoreModal.js","./components/Footer":"components/Footer.js","./GlobalContext":"GlobalContext.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./components/Question":"components/Question.js","./components/ScoreModal":"components/ScoreModal.js","./GlobalContext":"GlobalContext.js","./components/Footer":"components/Footer.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -29979,7 +29979,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61213" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49829" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
