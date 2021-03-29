@@ -1,4 +1,3 @@
-
 <h1 align="center">Country quiz</h1>
 
 <div align="center">
@@ -17,12 +16,12 @@
 
 ## Table of Contents
 
--   [Overview](#overview)
-    -   [Built With](#built-with)
--   [Features](#features)
--   [How to use](#how-to-use)
--   [Contact](#contact)
--   [Acknowledgements](#acknowledgements)
+- [Overview](#overview)
+  - [Built With](#built-with)
+- [Features](#features)
+- [How to use](#how-to-use)
+- [Contact](#contact)
+- [Description](#description)
 
 <!-- OVERVIEW -->
 
@@ -34,27 +33,15 @@
 
 ![score](./images/score.webp);
 
--   Click this link to see my app [country-quiz](https://country-quiz-daniel.netlify.app/) :
-  
-1. I fetched all the countries from the [API](https://restcountries.eu/) and I created an object that stores all four random capital of cities, then I mapped them inside a button.
+- Click this link to see my app [country-quiz](https://country-quiz-daniel.netlify.app/) :
 
-1. I created an array of questions so and displayed them randomly by using `Math.floor()` and `Math.random()`.
-
-1. I grabbed all buttons and set conditions to see the correct answer and the wrong one by changing their background color if one of them is clicked.
-
-1. `Counter` is used in order to get the score everytime the user clicks the right answer.
-
-1. To display the score card, I used condition as below: if a user clicked the wrong answer the card appear with the score. The card disappears once the user clicks the retry button.
-------------------------------------------------------------------------------
-
--   When I did this project, I faced different challenge especially on changing the background color of the button when it is true or not.
--   If you want to make any modification to an element that we grabed by using `querySelectorAll`, don't forget to use `forEach()`.
--   If you do a project, it is better to enlist a few plan before start doing it.
+## Description
+A game that I created in 3 days in order to practice my React skill.
 
 ### Built With
 
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
--   [React](https://reactjs.org/)
+- [React](https://reactjs.org/)
 
 ## Features
 
@@ -78,5 +65,6 @@ $ npm start
 
 ## Contact
 
--   Website [h-fabrice-daniel.com](https://daniel-fabrice-website.netlify.app/)
--   GitHub [voromahery](https://github.com/voromahery/country-quiz)
+- Email: Daniel.her@onja.org
+- Phone: +2613791472
+- GitHub [voromahery](https://github.com/voromahery/country-quiz)
