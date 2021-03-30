@@ -26,6 +26,7 @@
 @media (min-width: 350px) {
     .header-wrapper > .heading {
         font-size: 36px;
+        margin-bottom: 10px;
     }
 
     .heading-result {

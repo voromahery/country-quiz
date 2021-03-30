@@ -107,6 +107,7 @@ ul {
 @media (min-width: 350px) {
     .header-wrapper > .heading {
         font-size: 36px;
+        margin-bottom: 10px;
     }
 
     .heading-result {
@@ -164,7 +165,7 @@ picture {
 
 @media (min-width: 482px) {
   .adventure {
-    top: 30%;
+    top: 20%;
   }
 }
 
@@ -187,11 +188,6 @@ picture {
   text-align: center;
   padding-top: calc(49px / 2);
   padding-bottom: calc(33px / 2);
-}
-
-.letter {
-  font-size: 18px;
-  margin: 10px;
 }
 
 .question {
@@ -223,14 +219,9 @@ picture {
     padding-bottom: 68px;
   }
 
-  .letter {
-    margin: 19px;
-    margin-right: 46px;
-  }
-
-  .letter,
   .question {
     font-size: 24px;
+    margin-bottom: 32px;
   }
 
   .score-card {
@@ -396,6 +387,11 @@ button:disabled {
   min-height: 45px;
 }
 
+.letter {
+  font-size: 18px;
+  margin: 10px;
+}
+
 @media (min-width: 350px) {
   .next,
   .button-answer,
@@ -405,8 +401,7 @@ button:disabled {
 
   .next,
   .lost,
-  .nextButton,
-  .button-answer {
+  .nextButton {
     height: 56px;
   }
 
@@ -428,12 +423,21 @@ button:disabled {
     max-width: 209px;
     min-height: 62px;
   }
+
+  .letter {
+    font-size: 24px;
+    margin-left: 19px;
+    margin-right: 46px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
 }
 
 
 
 footer {
-    /* display: none; */
     text-align: center;
 }
 
