@@ -2,6 +2,7 @@
 
 button {
   cursor: pointer;
+  outline: none;
 }
 
 button:disabled {
@@ -14,6 +15,11 @@ button:disabled {
   background-color: transparent;
   color: #1d355d;
   font-weight: 600;
+}
+
+.retry-button:hover {
+  background-color: #1d355d;
+  color: #FFFFFF;
 }
 
 .lost,
@@ -69,8 +75,7 @@ button:disabled {
 .button-answer:hover,
 .next,
 .lost,
-.nextButton,
-.retry-button:hover {
+.nextButton {
   background-color: #f9a826;
   border: solid 2px #f9a826;
 }
