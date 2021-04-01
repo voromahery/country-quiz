@@ -65,6 +65,6 @@ $ npm start
 
 ## Contact
 
-- Email: Daniel.her@onja.org
+- Email: daniel.her@onja.org
 - Phone: +2613791472
 - GitHub [voromahery](https://github.com/voromahery/country-quiz)
