@@ -41,8 +41,7 @@ export default function ScoreModal() {
         <img src={scoreImage} alt="score" />
         <h1 className="heading-result">Results</h1>
         <p className="score-text">
-          You got <span className="score">{counter}</span> correct
-          {scoreLetter}
+          You got <span className="score">{counter}</span> correct {scoreLetter}
         </p>
         <button className="retry-button" onClick={retryAgain}>
           Try again

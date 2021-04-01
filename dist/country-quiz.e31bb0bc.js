@@ -29880,7 +29880,7 @@ function ScoreModal() {
     className: "score-text"
   }, "You got ", _react.default.createElement("span", {
     className: "score"
-  }, counter), " correct", scoreLetter), _react.default.createElement("button", {
+  }, counter), " correct ", scoreLetter), _react.default.createElement("button", {
     className: "retry-button",
     onClick: retryAgain
   }, "Try again")));
@@ -29979,7 +29979,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58008" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55064" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
