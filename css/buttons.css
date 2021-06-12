@@ -50,6 +50,14 @@ button:disabled {
   max-width: calc(116px / 2);
 }
 
+.button-answer:hover,
+.next,
+.lost,
+.nextButton {
+  background-color: #f9a826;
+  border: solid 2px #f9a826;
+}
+
 .button-answer,
 .button-answer:disabled:hover {
   background-color: #ffffff;
@@ -71,14 +79,6 @@ button:disabled {
 .button-answer,
 .next {
   font-weight: 500;
-}
-
-.button-answer:hover,
-.next,
-.lost,
-.nextButton {
-  background-color: #f9a826;
-  border: solid 2px #f9a826;
 }
 
 .next {
