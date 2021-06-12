@@ -19,7 +19,7 @@ button:disabled {
 
 .retry-button:hover {
   background-color: #1d355d;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .lost,
@@ -50,7 +50,8 @@ button:disabled {
   max-width: calc(116px / 2);
 }
 
-.button-answer {
+.button-answer,
+.button-answer:disabled {
   background-color: #ffffff;
   text-align: start;
   color: rgba(96, 102, 208, 0.8);
