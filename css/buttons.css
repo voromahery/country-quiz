@@ -92,14 +92,25 @@ button:disabled {
   align-items: center;
 }
 
+.button-answer,
+.button-answer:disabled:hover {
+  background-color: #ffffff;
+  text-align: start;
+  color: rgba(96, 102, 208, 0.8);
+  border: 2px solid rgba(96, 102, 208, 0.7);
+  display: flex;
+  align-items: center;
+  min-width: 133px;
+}
+
 .true,
-.true:hover {
+.true:disabled:hover {
   background-color: #60bf88;
   border: solid 2px #60bf88;
 }
 
 .false,
-.false:hover {
+.false:disabled:hover {
   background-color: #ea8282;
   border: solid #ea8282 2px;
 }
@@ -118,8 +129,8 @@ button:disabled {
 .button-answer:hover,
 .false,
 .true,
-.true:hover,
-.false:hover,
+.true:disabled:hover,
+.false:disabled:hover,
 .retry-button:hover {
   color: #ffffff;
 }
@@ -132,17 +143,6 @@ button:disabled {
 .letter {
   font-size: 18px;
   margin: 10px;
-}
-
-.button-answer,
-.button-answer:disabled:hover {
-  background-color: #ffffff;
-  text-align: start;
-  color: rgba(96, 102, 208, 0.8);
-  border: 2px solid rgba(96, 102, 208, 0.7);
-  display: flex;
-  align-items: center;
-  min-width: 133px;
 }
 
 @media (min-width: 350px) {
