@@ -51,7 +51,7 @@ button:disabled {
 }
 
 .button-answer,
-.button-answer:disabled {
+.button-answer:disabled:hover {
   background-color: #ffffff;
   text-align: start;
   color: rgba(96, 102, 208, 0.8);
